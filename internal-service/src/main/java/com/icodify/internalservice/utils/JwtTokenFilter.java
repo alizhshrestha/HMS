@@ -1,6 +1,8 @@
 package com.icodify.internalservice.utils;
 
+import com.icodify.internalservice.entity.Role;
 import com.icodify.internalservice.entity.User;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,7 +48,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         UserDetails userDetails = getUserDetails(accessToken);
 
         UsernamePasswordAuthenticationToken authentication =
-                new UsernamePasswordAuthenticationToken(userDetails, null, null);
+                new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
@@ -56,7 +58,21 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private UserDetails getUserDetails(String accessToken) {
         User userDetails = new User();
-        String[] subjectArray = jwtTokenUtil.getSubject(accessToken).split(",");
+        Claims claims = jwtTokenUtil.parseClaims(accessToken);
+
+        String claimsRoles = (String) claims.get("roles");
+
+        System.out.println("claims roles: " + claimsRoles);
+
+        claimsRoles = (claimsRoles!=null) ? claimsRoles.replace("[", "").replace("]","") : "";
+        String[] roleNames = claimsRoles.split(",");
+
+        for (String aRoleName : roleNames){
+            userDetails.addRole(new Role(aRoleName));
+        }
+
+        String subject = (String)claims.get(Claims.SUBJECT);
+        String[] subjectArray = subject.split(",");
         userDetails.setId(Integer.parseInt(subjectArray[0]));
         userDetails.setEmail(subjectArray[1]);
 
@@ -65,7 +81,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private boolean hasAuthorizationHeader(HttpServletRequest request){
         String header = request.getHeader("Authorization");
-        System.out.println("Authorization Header: " + header);
+//        System.out.println("Authorization Header: " + header);
 
         if(ObjectUtils.isEmpty(header) || !header.startsWith("Bearer"))
             return false;

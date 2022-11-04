@@ -5,6 +5,14 @@ spring:
         id: payment-service
         predicates[0]: Path=/api/payment
         uri: lb://payment-service
+      routes[1]:
+        id: internal-service
+        predicates[0]: Path=/api/internal
+        uri: lb://internal-service
+      routes[2]:
+        id: internal-service
+        predicates[0]: Path=/api/internal/**
+        uri: lb://internal-service
 
   application:
     name: api-gateway
