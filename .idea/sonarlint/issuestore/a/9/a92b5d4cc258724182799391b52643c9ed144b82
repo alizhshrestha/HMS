@@ -1,0 +1,6 @@
+
+[
+java:S4684 "@Replace this persistent entity with a simple POJO or DTO object.(úÇ÷êûÿÿÿÿ
+V	java:S125%"<This block of commented-out lines of code should be removed.(›Îİùÿÿÿÿ
+[
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ

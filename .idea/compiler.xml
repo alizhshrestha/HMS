@@ -8,11 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
+        <module name="multitenant" />
         <module name="config-server" />
         <module name="discovery-server" />
         <module name="payment-service" />
         <module name="internal-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="multi-tenant" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

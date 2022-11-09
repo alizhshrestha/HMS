@@ -1,0 +1,7 @@
+
+s
+java:S1488^"]Immediately return this expression instead of assigning it to the temporary variable "token".(¡òßê
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(ÒÕÔ¡ùÿÿÿÿ
+W
+java:S1126V"AReplace this if-then-else statement by a single return statement.(å£Ú¿
+Q	java:S125T"<This block of commented-out lines of code should be removed.(¿°Ö

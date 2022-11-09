@@ -1,0 +1,13 @@
+
+m
+java:S3305!"RInject this field value directly into "filterChain", the only method that uses it.(¨ĞÅÜÿÿÿÿÿ
+G
+java:S1602(",Remove useless curly braces around statement(ôİ†âùÿÿÿÿ
+A
+java:S1602,",Remove useless curly braces around statement(àÔ«E
+V	java:S1250"<This block of commented-out lines of code should be removed.(­í°ıÿÿÿÿ
+‡
+java:S1128
+"lRemove this unused import 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken'.(ÖÆ„Ùüÿÿÿÿ
+f
+java:S1128"KRemove this unused import 'org.springframework.security.config.Customizer'.(Ïóœ¬ùÿÿÿÿ
