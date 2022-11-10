@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class JwtDecoder {
 	private static final String AUTHORIZATION = "Authorization";
-	private static final String JWT_TOKEN_LABEL = "token";
+	private static final String JWT_TOKEN_LABEL = "Bearer";
 	
 	private final String jwtToken;
 	
@@ -24,6 +24,7 @@ public class JwtDecoder {
 	                .orElseThrow(() -> {
 	                    return new CredentialsException("Missing Authentication Token");
 	                });
+
 	}
 	
 	

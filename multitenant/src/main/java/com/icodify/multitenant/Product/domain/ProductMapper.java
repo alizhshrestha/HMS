@@ -1,8 +1,8 @@
 package com.icodify.multitenant.Product.domain;
 
 import com.icodify.multitenant.Product.dto.ProductDto;
-import com.icodify.multitenant.database.model.entities.Product;
-import com.icodify.multitenant.database.model.entities.Warehouse;
+import com.icodify.multitenant.model.entities.Product;
+import com.icodify.multitenant.model.entities.Warehouse;
 
 import java.math.BigDecimal;
 import java.util.Optional;

@@ -1,6 +1,7 @@
 package com.icodify.multitenant.config.spring.multitenancy;
 
 import com.icodify.multitenant.config.multitenancy.context.TenantContext;
+import com.icodify.multitenant.security.domain.SecurityDomain;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
