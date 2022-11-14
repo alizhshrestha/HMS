@@ -3,9 +3,7 @@ package com.icodify.multitenant.model.entities;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -13,6 +11,10 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class Product extends BaseEntity{
+
+	@Id
+	@GeneratedValue(generator = "seq_gen")
+	protected Integer id;
 
 	private String name;
 	private String description;
