@@ -26,9 +26,10 @@ public class Permission extends BaseEntity{
     )
     private UUID id;
 
+    @Column(name = "name",length = 100)
     private String name;
 
-    @Column(name = "guard_name")
+    @Column(name = "guard_name", length = 100)
     private String guardName;
 
     @OneToMany(mappedBy = "permission")

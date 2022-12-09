@@ -13,7 +13,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "accounts")
-@SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,28 +20,43 @@ import java.util.UUID;
 public class Account extends BaseEntity{
 
     @Id
-    @GeneratedValue(generator = "seq_gen")
-    protected Integer id;
+//    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
+//    @GeneratedValue(generator = "seq_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int id;
 
     private UUID uuid;
+    @Column(length = 100)
     private String title;
-    @Column(name = "address_line1")
+    @Lob
+    @Column(nullable = true)
+    private String description;
+    @Column(name = "address_line1", length = 100)
     private String addressLine1;
-    @Column(name = "address_line2")
+    @Column(name = "address_line2", length = 50, nullable = true)
     private String addressLine2;
+    @Column(length = 100)
     private String city;
+    @Column(length = 100)
     private String country;
+    @Column(length = 50)
     private String zip;
+    @Column(length = 256)
     private String logo;
+    @Column(length = 256, nullable = true)
     private String favicon;
+    @Column(length = 50)
     private String email;
+    @Column(length = 50, nullable = true)
     private String contact;
+    @Column(length = 50, nullable = true)
     private String phone;
-    @Column(name = "meta_title")
+    @Column(name = "meta_title", length = 100)
     private String metaTitle;
-    @Column(name = "meta_keyword")
+    @Column(name = "meta_keyword", length = 100, nullable = true)
     private String metaKeyword;
-    @Column(name = "meta_description")
+    @Column(name = "meta_description", nullable = true)
+    @Lob
     private String metaDescription;
 
     @OneToMany(mappedBy = "account")

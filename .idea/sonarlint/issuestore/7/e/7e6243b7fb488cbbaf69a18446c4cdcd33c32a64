@@ -1,0 +1,8 @@
+
+]
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(½ýûÒ8À‚ïˆÏ0
+X	java:S125"<This block of commented-out lines of code should be removed.(´¨øº8ûíˆÏ0
+x
+java:S1128"VRemove this unused import 'com.icodify.multitenant.model.dto.request.AdminRequestDto'.(ñÏºžÿÿÿÿÿ8‰“°Ï0
+u
+java:S1128"XRemove this unused import 'com.icodify.multitenant.model.dto.response.AdminResponseDto'.(£®ªÍ8Š“°Ï0

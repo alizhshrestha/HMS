@@ -9,8 +9,7 @@ import java.math.BigDecimal;
 @Entity
 @SequenceGenerator(name="seq_gen", sequenceName="warehouse_seq_gen", allocationSize = 1, initialValue = 1)
 @Data
-@EqualsAndHashCode(callSuper=true)
-public class Warehouse extends BaseEntity{
+public class Warehouse{
 
 	@Id
 	@GeneratedValue(generator = "seq_gen")

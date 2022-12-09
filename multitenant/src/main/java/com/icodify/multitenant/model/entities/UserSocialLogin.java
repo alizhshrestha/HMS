@@ -28,9 +28,11 @@ public class UserSocialLogin extends BaseEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "username", length = 256)
     private String username;
+    @Column(name = "provider", length = 30)
     private String provider;
-    @Column(name = "provider_id")
+    @Column(name = "provider_id", length = 100)
     private String providerId;
     private String image;
 }

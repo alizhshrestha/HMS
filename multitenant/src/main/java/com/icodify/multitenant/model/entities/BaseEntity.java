@@ -2,6 +2,7 @@ package com.icodify.multitenant.model.entities;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -11,6 +12,8 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseEntity {
 
-    private Date created_at;
-    private Date updated_at;
+    @Column(name = "created_at")
+    private Date createdAt = new Date();
+    @Column(name = "updated_at", nullable = true)
+    private Date updatedAt;
 }

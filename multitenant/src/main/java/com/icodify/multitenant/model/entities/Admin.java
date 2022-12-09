@@ -1,9 +1,6 @@
 package com.icodify.multitenant.model.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,24 +8,32 @@ import java.util.Set;
 
 @Entity
 @Table(name = "admins")
-@SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Admin extends BaseEntity{
     @Id
-    @GeneratedValue(generator = "seq_gen")
-    protected Integer id;
+//    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
+//    @GeneratedValue(generator = "seq_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private String first_name;
-    private String middle_name;
-    private String last_name;
+    @Column(name = "first_name", length = 100)
+    private String firstName;
+    @Column(name = "middle_name", length = 100)
+    private String middleName;
+    @Column(name = "last_name", length = 100, nullable = true)
+    private String lastName;
+    @Column(name = "email", length = 50)
     private String email;
+    @Column(name = "password", length = 100)
     private String password;
     private boolean status = false;
-    private boolean is_verified = false;
-    private String remember_token;
+    @Column(name = "is_verified")
+    private boolean isVerified = false;
+    @Column(name="remember_token" ,length = 256)
+    private String rememberToken;
 
     @OneToMany(mappedBy = "admin")
     private Set<AccountAdmins> accountAdmins = new HashSet<>();

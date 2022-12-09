@@ -1,0 +1,10 @@
+
+j	java:S116"URename this field "first_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è•Ûì
+k	java:S116"VRename this field "middle_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øø•
+i	java:S116"TRename this field "last_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šø´¯
+p	java:S116"VRename this field "is_verified" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á˜àîşÿÿÿÿ
+s	java:S116"YRename this field "remember_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÆâ¬ÿÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(ÉâÙ£
+<
+java:S1170"!Make this final field static too.(Á˜àîşÿÿÿÿ

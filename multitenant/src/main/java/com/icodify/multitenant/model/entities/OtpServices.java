@@ -32,15 +32,15 @@ public class OtpServices extends BaseEntity{
     private Date otpGeneratedDate;
 
     @Column(name = "otp_valid_minutes")
-    private Integer otpValidMinutes;
+    private int otpValidMinutes;
 
-    @Column(name = "otp_for")
+    @Column(name = "otp_for", length = 80)
     private String otpFor;
 
-    @Column(name = "otp_service_type")
+    @Column(name = "otp_service_type", length = 50)
     private String otpServiceType;
 
-    @Column(name = "verified_date")
+    @Column(name = "verified_date", nullable = true)
     private Date verifiedDate;
 
 
