@@ -10,7 +10,7 @@ public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver
     @Override
     public String resolveCurrentTenantIdentifier() {
         return Optional.ofNullable(TenantContext.getCurrentTenant())
-                .orElse(TenantContext.DEFAULT_TENANT_ID);
+                .orElse("tenant1");
     }
 
     @Override

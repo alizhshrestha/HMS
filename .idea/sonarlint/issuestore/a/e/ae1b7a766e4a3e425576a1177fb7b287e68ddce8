@@ -1,8 +1,0 @@
-
-b	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(Ϋ‡ύθ8Θλά‚Ο0
-{
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(―τνόÿÿÿÿ8Κλά‚Ο0
-d
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(η¤εύ8χλά‚Ο0
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(ξπ‚ÿÿÿÿÿ8ύλά‚Ο0

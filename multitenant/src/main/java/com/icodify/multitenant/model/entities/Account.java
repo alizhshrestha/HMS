@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,13 +24,13 @@ public class Account extends BaseEntity{
 //    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
 //    @GeneratedValue(generator = "seq_gen")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
 
     private UUID uuid;
     @Column(length = 100)
     private String title;
     @Lob
-    @Column(nullable = true)
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
     @Column(name = "address_line1", length = 100)
     private String addressLine1;
@@ -57,6 +58,7 @@ public class Account extends BaseEntity{
     private String metaKeyword;
     @Column(name = "meta_description", nullable = true)
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String metaDescription;
 
     @OneToMany(mappedBy = "account")

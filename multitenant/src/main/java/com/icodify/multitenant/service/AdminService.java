@@ -2,23 +2,22 @@ package com.icodify.multitenant.service;
 
 import com.icodify.multitenant.model.dto.request.AdminRequestDto;
 import com.icodify.multitenant.model.dto.response.AdminResponseDto;
-import com.icodify.multitenant.model.entities.Admin;
+
+import java.util.List;
 
 public interface AdminService {
 
-    //save admin
-    AdminResponseDto saveAdmin(AdminRequestDto adminDto, Integer accountId);
 
-    Admin createAdmin(Admin admin);
+    AdminResponseDto createAdmin(AdminRequestDto adminRequestDto, Integer accountId);
 
     //update admin
-    AdminResponseDto updateAdmin(AdminRequestDto adminDto, Integer adminId);
+    AdminResponseDto updateAdmin(AdminRequestDto adminDto, Integer adminId, Integer accountId);
 
     //get admin
     AdminResponseDto getAdminById(Integer adminId);
 
     //get all admins
-    AdminResponseDto getAllAdmins();
+    List<AdminResponseDto> getAllAdmins();
 
     //delete admins
     void deleteAdmin(Integer adminId);

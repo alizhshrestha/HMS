@@ -1,10 +1,17 @@
 package com.icodify.multitenant.model.entities;
 
 import lombok.*;
+import org.springframework.data.repository.cdi.Eager;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "admins")
@@ -12,7 +19,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin extends BaseEntity{
+@Builder
+public class Admin extends BaseEntity implements UserDetails {
     @Id
 //    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
 //    @GeneratedValue(generator = "seq_gen")
@@ -35,10 +43,41 @@ public class Admin extends BaseEntity{
     @Column(name="remember_token" ,length = 256)
     private String rememberToken;
 
-    @OneToMany(mappedBy = "admin")
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AccountAdmins> accountAdmins = new HashSet<>();
 
-    @OneToMany(mappedBy = "admin")
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AdminRoles> adminRoles = new HashSet<>();
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.adminRoles.stream()
+                .map(adminRole -> new SimpleGrantedAuthority(adminRole.getRole().getName())).collect(Collectors.toList());
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

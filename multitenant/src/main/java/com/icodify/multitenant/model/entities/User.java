@@ -22,7 +22,7 @@ public class User extends BaseEntity{
     @Id
 //    @GeneratedValue(generator = "seq_gen")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
 
     @Column(name = "first_name", length = 100)
     private String firstName;

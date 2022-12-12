@@ -1,9 +1,6 @@
 package com.icodify.multitenant.model.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -11,12 +8,14 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class AccountResponseDto {
 
-    private Integer id;
+    private int id;
 
     private UUID uuid;
     private String title;
+    private String description;
     private String addressLine1;
     private String addressLine2;
     private String city;
@@ -30,4 +29,5 @@ public class AccountResponseDto {
     private String metaTitle;
     private String metaKeyword;
     private String metaDescription;
+
 }

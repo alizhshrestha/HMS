@@ -19,7 +19,7 @@ public class AccountAdmins extends BaseEntity{
 //    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account_admins", allocationSize = 1, initialValue = 1)
 //    @GeneratedValue(generator = "seq_gen")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
 
     private UUID uuid;
 
@@ -27,7 +27,7 @@ public class AccountAdmins extends BaseEntity{
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 

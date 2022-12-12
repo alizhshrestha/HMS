@@ -1,32 +1,36 @@
 package com.icodify.multitenant.model.dto.response;
 
 import com.icodify.multitenant.model.entities.Account;
-import com.icodify.multitenant.model.entities.Role;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.icodify.multitenant.model.entities.Admin;
+import lombok.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class AdminResponseDto {
-    protected Integer id;
 
-    private String first_name;
-    private String middle_name;
-    private String last_name;
+    private Integer id;
+    private String firstName;
+    private String middleName;
+    private String lastName;
     private String email;
-    private String password;
-    private final boolean status = false;
-    private final boolean is_verified = false;
-    private String remember_token;
+//    private String password;
+    private boolean status = false;
+    private boolean isVerified = false;
+    private String rememberToken;
+    private UUID uuid;
+    private Set<AccountResponseDto> accounts = new HashSet<>();
+    private String isInvitation;
+    private String invitedById;
+    private boolean isActive;
+    private Date activatedDate;
+    private String activatedReason;
 
-    private final Set<Account> accounts = new HashSet<>();
-
-    private final Set<Role> roles = new HashSet<>();
 }

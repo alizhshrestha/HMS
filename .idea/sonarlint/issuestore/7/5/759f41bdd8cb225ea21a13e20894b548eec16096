@@ -1,20 +1,0 @@
-
-q	java:S116"URename this field "first_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è•Ûì8ÅÃ …Ï0
-r	java:S116"VRename this field "middle_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øø•8ÆÃ …Ï0
-p	java:S116"TRename this field "last_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šø´¯8ÆÃ …Ï0
-w	java:S116"VRename this field "is_verified" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á˜àîşÿÿÿÿ8ÆÃ …Ï0
-z	java:S116"YRename this field "remember_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÆâ¬ÿÿÿÿÿ8ÆÃ …Ï0
->
-java:S1170"!Make this final field static too.(ÉâÙ£8õÃ¤…Ï0
-C
-java:S1170"!Make this final field static too.(Á˜àîşÿÿÿÿ8õÃ¤…Ï0
-X	java:S125"<This block of commented-out lines of code should be removed.(ë»®°8åÖ©†Ï0
-m
-java:S1128"KRemove this unused import 'com.icodify.multitenant.model.entities.Account'.(¹³ÿ†ÿÿÿÿÿ8åÖ©†Ï0
-e
-java:S1128"HRemove this unused import 'com.icodify.multitenant.model.entities.Role'.(¹š¼å8åÖ©†Ï0
-J
-java:S1128
-".Remove this unused import 'java.util.HashSet'.(Ê‚êX8åÖ©†Ï0
-L
-java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8åÖ©†Ï0
