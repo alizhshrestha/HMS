@@ -48,7 +48,7 @@ public class SecurityConfig {
         http.csrf().disable().authorizeRequests(auth -> {
             auth
                     .antMatchers(PUBLIC_URLS).permitAll()
-                    .anyRequest().authenticated();
+                    .anyRequest().permitAll();
         });
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

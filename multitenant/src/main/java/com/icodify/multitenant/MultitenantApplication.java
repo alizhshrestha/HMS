@@ -1,5 +1,6 @@
 package com.icodify.multitenant;
 
+import com.icodify.multitenant.config.multitenancy.context.TenantContext;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.Admin;
 import com.icodify.multitenant.repository.AccountRepository;
@@ -36,6 +37,7 @@ public class MultitenantApplication {
         return args -> {
             List<Account> allaccounts = accountRepository.findAll();
             System.out.println("Accounts::::::>>>> " + allaccounts);
+            System.out.println("Current Tenant>>>>>>>>>>" + TenantContext.getCurrentTenant());
         };
     }
 

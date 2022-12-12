@@ -1,5 +1,6 @@
 package com.icodify.multitenant.security.config;
 
+import com.icodify.multitenant.exception.ResourceNotFoundException;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.AccountAdmins;
 import com.icodify.multitenant.model.entities.Admin;
@@ -22,9 +23,12 @@ import java.util.stream.Collectors;
 public class JwtTokenHelper {
 
     private AdminRepository adminRepository;
+    private AccountRepository accountRepository;
 
-    public JwtTokenHelper(AdminRepository adminRepository) {
+    public JwtTokenHelper(AdminRepository adminRepository,
+                          AccountRepository accountRepository) {
         this.adminRepository = adminRepository;
+        this.accountRepository = accountRepository;
     }
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
@@ -39,6 +43,11 @@ public class JwtTokenHelper {
     //retrieve expiration date from jwt token
     public Date getExpirationDateFromToken(String token){
         return getClaimFromToken(token, Claims::getExpiration);
+    }
+
+    public String getTenantIdFromToken(String token){
+        final Claims claims = getAllClaimsFromToken(token);
+        return claims.get("tenant-id").toString();
     }
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver){
@@ -60,12 +69,16 @@ public class JwtTokenHelper {
     //generate token for user
     public String generateToken(UserDetails userDetails){
 
-//        Admin admin = adminRepository.findByEmailAndPassword(userDetails.getUsername(), userDetails.getPassword());
+        Admin admin = adminRepository.findByEmailAndPassword(userDetails.getUsername(), userDetails.getPassword());
+//        System.out.println("Admin>>>>>>>>>>" + admin);
+//        System.out.println("Username:::::::: " + userDetails.getUsername());
+//        System.out.println("Username:::::::: " + userDetails.getPassword());
 //
-//        List<Account> accountsOfAdmin = findAccountsOfAdmin(admin);
-
+        Account accountOfAdmin = findAccountOfAdmin(admin, 1);
+//        System.out.println("Accounts>>>>>>>>>" + accountsOfAdmin);
         Map<String, Object> claims = new HashMap<>();
-//        claims.put("tenant-id", )
+//        claims.put("tenant-id", accountOfAdmin.getTitle());
+        claims.put("tenant-id", "tenant2");
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
@@ -88,8 +101,14 @@ public class JwtTokenHelper {
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    public List<Account> findAccountsOfAdmin(Admin admin){
-        return admin.getAccountAdmins().stream().map(AccountAdmins::getAccount).collect(Collectors.toList());
+    public Account findAccountOfAdmin(Admin admin, Integer accountId){
+        Account account = admin.getAccountAdmins().stream()
+                .map(AccountAdmins::getAccount)
+                .filter(acc -> acc.getId() == accountId)
+                .findAny()
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "Id", accountId));
+
+        return account;
     }
 
 }

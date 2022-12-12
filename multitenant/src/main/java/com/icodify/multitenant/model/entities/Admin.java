@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class Admin extends BaseEntity implements UserDetails {
     @Id
 //    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)

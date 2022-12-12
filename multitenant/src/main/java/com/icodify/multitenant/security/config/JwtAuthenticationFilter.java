@@ -1,5 +1,6 @@
 package com.icodify.multitenant.security.config;
 
+import com.icodify.multitenant.config.multitenancy.context.TenantContext;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import org.slf4j.Logger;
@@ -60,6 +61,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if(this.jwtTokenHelper.validateToken(token, userDetails)){
                 //if token is valid
                 //to do authentication
+
+                //get tenant id from token and set to context
+                String tenant = this.jwtTokenHelper.getTenantIdFromToken(token);
+                TenantContext.setCurrentTenant(tenant);
+
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

@@ -1,9 +1,6 @@
 package com.icodify.multitenant.model.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -18,6 +15,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Account extends BaseEntity{
 
     @Id
@@ -61,7 +59,7 @@ public class Account extends BaseEntity{
     @Type(type = "org.hibernate.type.TextType")
     private String metaDescription;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<AccountAdmins> accountAdmins = new HashSet<>();
 
 
