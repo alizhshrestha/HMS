@@ -42,13 +42,36 @@ public class AdminServiceImpl implements AdminService {
 
         Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResourceNotFoundException("Account", "Id", accountId));
 
-        Admin admin = this.modelMapper.map(adminRequestDto, Admin.class);
-        admin.setPassword(passwordEncoder.encode(adminRequestDto.getPassword()));
+//        Admin admin = this.modelMapper.map(adminRequestDto, Admin.class);
 
-        AccountAdmins accountAdmins = this.modelMapper.map(adminRequestDto, AccountAdmins.class);
-        accountAdmins.setUuid(UUID.randomUUID());
-        accountAdmins.setAdmin(admin);
-        accountAdmins.setAccount(account);
+        Admin admin = Admin.builder()
+                .firstName(adminRequestDto.getFirstName())
+                .middleName(adminRequestDto.getMiddleName())
+                .lastName(adminRequestDto.getLastName())
+                .email(adminRequestDto.getEmail())
+                .password(passwordEncoder.encode(adminRequestDto.getPassword()))
+                .status(adminRequestDto.isStatus())
+                .isVerified(adminRequestDto.isVerified())
+                .rememberToken(adminRequestDto.getRememberToken())
+                .build();
+
+//        admin.setPassword(passwordEncoder.encode(adminRequestDto.getPassword()));
+
+//        AccountAdmins accountAdmins = this.modelMapper.map(adminRequestDto, AccountAdmins.class);
+//        accountAdmins.setUuid(UUID.randomUUID());
+//        accountAdmins.setAdmin(admin);
+//        accountAdmins.setAccount(account);
+
+        AccountAdmins accountAdmins = AccountAdmins.builder()
+                .admin(admin)
+                .account(account)
+                .uuid(UUID.randomUUID())
+                .isInvitation(adminRequestDto.getIsInvitation())
+                .invitedById(adminRequestDto.getInvitedById())
+                .isActive(adminRequestDto.isActive())
+                .activatedDate(adminRequestDto.getActivatedDate())
+                .activatedReason(adminRequestDto.getActivatedReason())
+                .build();
 
         if (admin.getAdminRoles() != null) {
             admin.getAccountAdmins().add(accountAdmins);

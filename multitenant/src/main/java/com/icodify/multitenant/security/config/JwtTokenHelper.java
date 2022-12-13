@@ -1,21 +1,23 @@
 package com.icodify.multitenant.security.config;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icodify.multitenant.exception.ResourceNotFoundException;
+import com.icodify.multitenant.model.dto.response.RoleResponseDto;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.AccountAdmins;
 import com.icodify.multitenant.model.entities.Admin;
+import com.icodify.multitenant.model.entities.Role;
 import com.icodify.multitenant.repository.AccountRepository;
 import com.icodify.multitenant.repository.AdminRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -24,11 +26,14 @@ public class JwtTokenHelper {
 
     private AdminRepository adminRepository;
     private AccountRepository accountRepository;
+    private ModelMapper modelMapper;
 
     public JwtTokenHelper(AdminRepository adminRepository,
-                          AccountRepository accountRepository) {
+                          AccountRepository accountRepository,
+                          ModelMapper modelMapper) {
         this.adminRepository = adminRepository;
         this.accountRepository = accountRepository;
+        this.modelMapper = modelMapper;
     }
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
@@ -50,6 +55,19 @@ public class JwtTokenHelper {
         return claims.get("tenant-id").toString();
     }
 
+//    public Map<String, Object> getParametersFromToken(String token){
+//        final Claims claims = getAllClaimsFromToken(token);
+//        Map<String, Object> parameters = new HashMap<>();
+//        parameters.put("tenant", claims.get("tenant-id").toString());
+//        parameters.put("roles", claims.get("roles", ArrayList.class));
+//        return parameters;
+//    }
+
+    public ArrayList getRolesFromToken(String token){
+        final Claims claims = getAllClaimsFromToken(token);
+        return claims.get("roles", ArrayList.class);
+    }
+
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver){
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
@@ -67,18 +85,20 @@ public class JwtTokenHelper {
     }
 
     //generate token for user
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails) throws JsonProcessingException {
 
         Admin admin = adminRepository.findByEmailAndPassword(userDetails.getUsername(), userDetails.getPassword());
-//        System.out.println("Admin>>>>>>>>>>" + admin);
-//        System.out.println("Username:::::::: " + userDetails.getUsername());
-//        System.out.println("Username:::::::: " + userDetails.getPassword());
-//
+        List<Role> admin_roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
+        List<String> roles = new ArrayList<>();
+        admin_roles.stream().forEach(role -> {
+            roles.add(role.getName());
+        });
+
         Account accountOfAdmin = findAccountOfAdmin(admin, 1);
-//        System.out.println("Accounts>>>>>>>>>" + accountsOfAdmin);
         Map<String, Object> claims = new HashMap<>();
 //        claims.put("tenant-id", accountOfAdmin.getTitle());
-        claims.put("tenant-id", "tenant2");
+        claims.put("tenant-id", "tenant");
+        claims.put("roles", roles);
         return doGenerateToken(claims, userDetails.getUsername());
     }
 

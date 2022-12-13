@@ -3,6 +3,7 @@ package com.icodify.multitenant;
 import com.icodify.multitenant.config.multitenancy.context.TenantContext;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.Admin;
+import com.icodify.multitenant.model.entities.Role;
 import com.icodify.multitenant.repository.AccountRepository;
 import com.icodify.multitenant.repository.AdminRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.icodify.multitenant")
@@ -23,9 +25,11 @@ import java.util.Optional;
 public class MultitenantApplication {
 
     private AccountRepository accountRepository;
+    private AdminRepository adminRepository;
 
-    public MultitenantApplication(AccountRepository accountRepository) {
+    public MultitenantApplication(AccountRepository accountRepository, AdminRepository adminRepository) {
         this.accountRepository = accountRepository;
+        this.adminRepository = adminRepository;
     }
 
     public static void main(String[] args) {
@@ -35,9 +39,18 @@ public class MultitenantApplication {
     @Bean
     CommandLineRunner commandLineRunner(){
         return args -> {
-            List<Account> allaccounts = accountRepository.findAll();
-            System.out.println("Accounts::::::>>>> " + allaccounts);
-            System.out.println("Current Tenant>>>>>>>>>>" + TenantContext.getCurrentTenant());
+//            List<Account> allaccounts = accountRepository.findAll();
+//            System.out.println("Accounts::::::>>>> " + allaccounts);
+//            System.out.println("Current Tenant>>>>>>>>>>" + TenantContext.getCurrentTenant());
+
+            List<Admin> admins = adminRepository.findAll();
+            System.out.println("Admins::::>>>>>>> " + admins);
+            admins.stream().forEach(admin -> {
+                List<Role> roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
+                roles.stream().forEach(role->{
+                    System.out.println("Roles::::>>>>>>> " + role.getName());
+                });
+            });
         };
     }
 
