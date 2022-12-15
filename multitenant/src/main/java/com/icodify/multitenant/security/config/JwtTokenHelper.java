@@ -17,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -85,7 +86,9 @@ public class JwtTokenHelper {
     }
 
     //generate token for user
-    public String generateToken(UserDetails userDetails) throws JsonProcessingException {
+    public String generateToken(UserDetails userDetails, HttpServletRequest servletRequest) throws JsonProcessingException {
+
+        String tenant = servletRequest.getHeader("tenantId");
 
         Admin admin = adminRepository.findByEmailAndPassword(userDetails.getUsername(), userDetails.getPassword());
         List<Role> admin_roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
@@ -97,7 +100,7 @@ public class JwtTokenHelper {
         Account accountOfAdmin = findAccountOfAdmin(admin, 1);
         Map<String, Object> claims = new HashMap<>();
 //        claims.put("tenant-id", accountOfAdmin.getTitle());
-        claims.put("tenant-id", "tenant");
+        claims.put("tenant-id", tenant);
         claims.put("roles", roles);
         return doGenerateToken(claims, userDetails.getUsername());
     }
