@@ -63,34 +63,27 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         //once we get the token, now validate
         if(username !=null && SecurityContextHolder.getContext().getAuthentication()==null){
+
+            boolean isSuperAdmin = false;
+
+            //get tenant id from token and set to context
+            String tenant = this.jwtTokenHelper.getTenantIdFromToken(token);
+            ArrayList<String> roles = this.jwtTokenHelper.getRolesFromToken(token);
+
+            for(String role: roles){
+                if(role.equals("ROLE_SUPERADMIN")){
+                    isSuperAdmin = true;
+                }
+            }
+            if(isSuperAdmin)
+                TenantContext.setCurrentTenant(TenantContext.DEFAULT_TENANT_ID);
+            else
+                TenantContext.setCurrentTenant(tenant);
+
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             if(this.jwtTokenHelper.validateToken(token, userDetails)){
                 //if token is valid
                 //to do authentication
-                ObjectMapper objectMapper = new ObjectMapper();
-                boolean isSuperAdmin = false;
-
-                //get tenant id from token and set to context
-                String tenant = this.jwtTokenHelper.getTenantIdFromToken(token);
-                ArrayList<String> roles = this.jwtTokenHelper.getRolesFromToken(token);
-//                Map<String, Object> parametersFromToken = this.jwtTokenHelper.getParametersFromToken(token);
-//                String tenant = parametersFromToken.get("tenant").toString();
-//                Object rolesObj = parametersFromToken.get("roles");
-//                List<String> roles = objectMapper.readValue(rolesObj.toString(), List.class);
-
-//                List<String> roles = Stream.of(rolesObj).map(Object::toString).collect(Collectors.toList());
-                System.out.println("tenant>>>>>>>>>>>>>>" + tenant);
-                System.out.println("roles>>>>>>>>>>>>>>" + roles.get(0));
-
-                for(String role: roles){
-                    if(role.equals("ROLE_SUPERADMIN")){
-                        isSuperAdmin = true;
-                    }
-                }
-                if(isSuperAdmin)
-                    TenantContext.setCurrentTenant(TenantContext.DEFAULT_TENANT_ID);
-                else
-                    TenantContext.setCurrentTenant(tenant);
 
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

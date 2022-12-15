@@ -69,8 +69,6 @@ Mmultitenant/src/main/java/com/icodify/multitenant/service/AccountService.java,
 Zmultitenant/src/main/java/com/icodify/multitenant/model/dto/response/AdminResponseDto.java,d\9\d9cf560f3d4d828daeb2b31c44efb9b74a4d24ca
 C
 multitenant/pom.xml,7\9\79e7eb83ba4780ec4c0821e7aa2e435ef70d6390
-x
-Hmultitenant/src/main/java/com/icodify/multitenant/config/BeanConfig.java,3\c\3c32b47d1eb96ea0c0f5f435852047ad65299729
 
 Omultitenant/src/main/java/com/icodify/multitenant/payloads/JwtAuthResponse.java,b\d\bde2877bc1220af97bf138c491bebc3327ef39f8
 }
@@ -91,12 +89,8 @@ Smultitenant/src/main/java/com/icodify/multitenant/repository/AccountRepository.
 Umultitenant/src/main/java/com/icodify/multitenant/security/domain/SecurityDomain.java,a\7\a78a852c0584a3900b0509d45cce3a0260addd05
 â
 Ymultitenant/src/main/java/com/icodify/multitenant/security/domain/SecurityDomainImpl.java,6\6\668e12c5b3684793b0908625f789033ec55699ed
-{
-Kmultitenant/src/main/java/com/icodify/multitenant/config/web/WebConfig.java,2\e\2e05ea5ace7a9899b5e21fb7241cd81d79d7d834
 ~
 Nmultitenant/src/main/java/com/icodify/multitenant/payloads/JwtAuthRequest.java,a\a\aa207c32071a5f91798e8b07434f41a29565b4d2
-ö
-jmultitenant/src/main/java/com/icodify/multitenant/config/spring/multitenancy/TenantRequestInterceptor.java,f\7\f791577f8226ffcd6818eb093b01ebe3cc2aa91b
 Ä
 Pmultitenant/src/main/java/com/icodify/multitenant/model/entities/BaseEntity.java,a\a\aa6bd7c3a096d7159ac2b08c127977f6052b2447
 Å
