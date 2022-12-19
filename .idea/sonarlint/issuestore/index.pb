@@ -29,8 +29,6 @@ Ninternal-service/src/main/java/com/icodify/internalservice/entity/Product.java
 \internal-service/src/main/java/com/icodify/internalservice/controller/ProductController.java,a\9\a92b5d4cc258724182799391b52643c9ed144b82
 ä
 Zinternal-service/src/main/java/com/icodify/internalservice/InternalServiceApplication.java,5\f\5fe61c2b3c5bd12ff7e22d068e9f53532f7fced9
-C
-multitenant/HELP.md,e\8\e83635c3178348847a76d01f5a71f332f101a3c9
 è
 _internal-service/src/main/java/com/icodify/internalservice/service/CustomUserDetailService.java,b\6\b67bd9c32549a8fced92eefa1080e85c6b3af84e
 {
@@ -61,14 +59,6 @@ Pmultitenant/src/main/java/com/icodify/multitenant/model/entities/Permission.jav
 Umultitenant/src/main/java/com/icodify/multitenant/model/entities/UserSocialLogin.java,9\1\912c21f684b2ff69ceee9caf84d9535b673fe6d0
 z
 Jmultitenant/src/main/java/com/icodify/multitenant/model/entities/User.java,0\9\0923de24e0c52d6b1cf6cf393c23821480994e8f
-}
-Mmultitenant/src/main/java/com/icodify/multitenant/service/AccountService.java,4\0\40d4bc2ea2d06a42b158a41d925a077ad66609d1
-å
-\multitenant/src/main/java/com/icodify/multitenant/model/dto/response/AccountResponseDto.java,5\d\5d62d4729b9fc7db933dd981638b1352c0f2c367
-ä
-Zmultitenant/src/main/java/com/icodify/multitenant/model/dto/response/AdminResponseDto.java,d\9\d9cf560f3d4d828daeb2b31c44efb9b74a4d24ca
-C
-multitenant/pom.xml,7\9\79e7eb83ba4780ec4c0821e7aa2e435ef70d6390
 
 Omultitenant/src/main/java/com/icodify/multitenant/payloads/JwtAuthResponse.java,b\d\bde2877bc1220af97bf138c491bebc3327ef39f8
 }
@@ -97,3 +87,7 @@ Pmultitenant/src/main/java/com/icodify/multitenant/model/entities/BaseEntity.jav
 Qmultitenant/src/main/java/com/icodify/multitenant/security/domain/JwtDecoder.java,e\0\e0f84b6855b8abf5527ae46c7c7b3bc008da6db7
 ã
 [multitenant/src/main/java/com/icodify/multitenant/security/domain/CredentialsException.java,0\3\0310cec79c5587d1bad4ed22d1cee82633e27db1
+ê
+`multitenant/src/main/java/com/icodify/multitenant/config/multitenancy/context/TenantContext.java,0\c\0c85ca100e9dd790e746db58efbd7820a4474fcd
+ö
+jmultitenant/src/main/java/com/icodify/multitenant/config/spring/multitenancy/TenantRequestInterceptor.java,f\7\f791577f8226ffcd6818eb093b01ebe3cc2aa91b

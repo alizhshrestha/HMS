@@ -15,6 +15,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @ToString
 public class Account extends BaseEntity{
 
@@ -59,7 +60,7 @@ public class Account extends BaseEntity{
     @Type(type = "org.hibernate.type.TextType")
     private String metaDescription;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<AccountAdmins> accountAdmins = new HashSet<>();
 
 

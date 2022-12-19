@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ public class MultitenantApplication {
 
     private AccountRepository accountRepository;
     private AdminRepository adminRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
     public MultitenantApplication(AccountRepository accountRepository, AdminRepository adminRepository) {
         this.accountRepository = accountRepository;
