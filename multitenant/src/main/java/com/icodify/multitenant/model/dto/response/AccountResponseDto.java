@@ -32,8 +32,8 @@ public class AccountResponseDto {
     private String metaKeyword;
     private String metaDescription;
 
-    private Admin admin;
-    private Account account;
+//    private AdminResponseDto admin;
+//    private AccountResponseDto account;
     private String isInvitation;
     private String invitedById;
     private boolean isActive;

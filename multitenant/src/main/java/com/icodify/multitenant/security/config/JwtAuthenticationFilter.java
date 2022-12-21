@@ -75,8 +75,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     isSuperAdmin = true;
                 }
             }
-            if(isSuperAdmin)
-                TenantContext.setCurrentTenant(TenantContext.DEFAULT_TENANT_ID);
+
+            String requestTenant = request.getHeader("tenant-id");
+
+            if(isSuperAdmin && requestTenant!=null)
+                TenantContext.setCurrentTenant(requestTenant);
             else
                 TenantContext.setCurrentTenant(tenant);
 

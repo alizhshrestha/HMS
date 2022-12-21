@@ -74,7 +74,7 @@ public class AccountServiceImpl implements AccountService {
                 .metaTitle(createdAccount.getMetaTitle())
                 .metaKeyword(createdAccount.getMetaKeyword())
                 .metaDescription(createdAccount.getMetaDescription())
-                .admin(null)
+//                .admin(null)
                 .isInvitation(accountAdmins.getIsInvitation())
                 .invitedById(accountAdmins.getInvitedById())
                 .isActive(accountAdmins.isActive())

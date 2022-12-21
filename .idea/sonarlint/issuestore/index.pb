@@ -45,8 +45,6 @@ Uinternal-service/src/main/java/com/icodify/internalservice/config/SecurityConfi
 .config-server/config-repo/internal-service.yml,1\1\11f2eb5250325b7aa60b5ac61c4287ff56a7e00e
 ]
 -config-server/config-repo/payment-service.yml,7\f\7f088473830392459b5b6be06b879987fc975858
-ä
-Zmultitenant/src/main/java/com/icodify/multitenant/config/swagger/SwaggerConfiguration.java,5\8\584f22e9ca2e311a4c93e6a99b22ef59dd90b002
 à
 Xmultitenant/src/main/java/com/icodify/multitenant/application/ApplicationController.java,4\9\49a600e4886dd075d5a845d97ba9ae8fb1e8a8aa
 {
@@ -87,7 +85,3 @@ Pmultitenant/src/main/java/com/icodify/multitenant/model/entities/BaseEntity.jav
 Qmultitenant/src/main/java/com/icodify/multitenant/security/domain/JwtDecoder.java,e\0\e0f84b6855b8abf5527ae46c7c7b3bc008da6db7
 ã
 [multitenant/src/main/java/com/icodify/multitenant/security/domain/CredentialsException.java,0\3\0310cec79c5587d1bad4ed22d1cee82633e27db1
-ê
-`multitenant/src/main/java/com/icodify/multitenant/config/multitenancy/context/TenantContext.java,0\c\0c85ca100e9dd790e746db58efbd7820a4474fcd
-ö
-jmultitenant/src/main/java/com/icodify/multitenant/config/spring/multitenancy/TenantRequestInterceptor.java,f\7\f791577f8226ffcd6818eb093b01ebe3cc2aa91b
