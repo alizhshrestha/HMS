@@ -1,0 +1,8 @@
+
+V	java:S125"<This block of commented-out lines of code should be removed.(ßßåúıÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(¾ÃË¢ÿÿÿÿÿ
+Q	java:S125E"<This block of commented-out lines of code should be removed.(‰‘¢
+Z
+java:S1128"?Remove this unused import 'org.springframework.http.MediaType'.(úŸİ¯şÿÿÿÿ
+l
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ

@@ -1,0 +1,32 @@
+
+[	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(ˆ§â˜
+t
+java:S2293`"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í›İùÿÿÿÿ
+P
+java:S1141."5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+\
+java:S1118":Add a private constructor to hide the implicit public one.(—üÄïüÿÿÿÿ8ÀÉíªÓ0
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(û£¾Ï
+X	java:S125"<This block of commented-out lines of code should be removed.(©Ô¾å8¦¾ÎªÓ0
+F
+java:S1481")Remove this unused "file" local variable.(Üóò´8ºóÏªÓ0
+a
+java:S62015"FReplace this instanceof check and cast with 'instanceof String string'(èåúşÿÿÿÿ
+]
+java:S62017"BReplace this instanceof check and cast with 'instanceof Long long'(ÇïíŸüÿÿÿÿ
+c
+java:S62019"HReplace this instanceof check and cast with 'instanceof Integer integer'(¬¼µÄúÿÿÿÿ
+\
+java:S6201;"FReplace this instanceof check and cast with 'instanceof Double double'(„Ê‰ú
+]	java:S125C"<This block of commented-out lines of code should be removed.(ƒÉğ÷øÿÿÿÿ8ÃóÏªÓ0
+X	java:S125E"<This block of commented-out lines of code should be removed.(ñ¥ğı8ÃóÏªÓ0
+X	java:S125J"<This block of commented-out lines of code should be removed.(çÄÙº8Ü×ÑªÓ0
+>	java:S108Q")Either remove or fill this block of code.(ï­£Ä
+>	java:S108W")Either remove or fill this block of code.(ï­£Ä
+E
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+Q
+java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg8à×ÑªÓ0
+S
+java:S1128"1Remove this unused import 'java.io.OutputStream'.(Ó ³ÿÿÿÿÿ8à×ÑªÓ0

@@ -4,9 +4,6 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -17,12 +14,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @ToString
-public class Account extends BaseEntity{
+public class Account extends BaseEntity {
 
     @Id
-//    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
-//    @GeneratedValue(generator = "seq_gen")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "seq_gen")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private UUID uuid;
@@ -60,8 +57,8 @@ public class Account extends BaseEntity{
     @Type(type = "org.hibernate.type.TextType")
     private String metaDescription;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<AccountAdmins> accountAdmins = new HashSet<>();
+//    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    private Set<AccountAdmins> accountAdmins = new HashSet<>();
 
 
 }

@@ -1,12 +1,15 @@
 package com.icodify.multitenant.config;
 
+import com.icodify.multitenant.security.config.CustomTenantFilter;
 import com.icodify.multitenant.security.config.JwtAuthenticationEntryPoint;
 import com.icodify.multitenant.security.config.JwtAuthenticationFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -21,6 +24,11 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
+//@EnableGlobalMethodSecurity(
+//        prePostEnabled = true,
+//        securedEnabled = true,
+//        jsr250Enabled = true
+//)
 public class SecurityConfig {
 
     public static final String[] PUBLIC_URLS = {
@@ -35,10 +43,14 @@ public class SecurityConfig {
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+    private CustomTenantFilter customTenantFilter;
 
-    public SecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint, JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
+                          JwtAuthenticationFilter jwtAuthenticationFilter,
+                          CustomTenantFilter customTenantFilter) {
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.customTenantFilter = customTenantFilter;
     }
 
     @Bean
@@ -50,13 +62,13 @@ public class SecurityConfig {
         http.csrf().disable().authorizeRequests(auth -> {
             auth
                     .antMatchers(PUBLIC_URLS).permitAll()
-//                    .antMatchers("/api/admins/**").hasRole("SUPERADMIN").anyRequest().permitAll();
+//                    .antMatchers(HttpMethod.POST,"/api/**").hasRole("SUPERADMIN")
                     .anyRequest().authenticated();
 //                    .anyRequest().permitAll();
         });
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+        http.addFilterAfter(customTenantFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
@@ -97,9 +109,9 @@ public class SecurityConfig {
         return bean;
     }
 
-//    @Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() throws Exception{
-//        return web -> web.ignoring().antMatchers(PUBLIC_URLS);
-//    }
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() throws Exception{
+        return web -> web.ignoring().antMatchers(PUBLIC_URLS);
+    }
 
 }

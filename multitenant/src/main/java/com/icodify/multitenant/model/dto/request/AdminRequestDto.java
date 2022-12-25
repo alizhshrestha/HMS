@@ -1,12 +1,6 @@
 package com.icodify.multitenant.model.dto.request;
 
-import com.icodify.multitenant.model.entities.Account;
-import com.icodify.multitenant.model.entities.Admin;
 import lombok.*;
-
-import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -25,10 +19,5 @@ public class AdminRequestDto {
     private String rememberToken;
 //    private UUID uuid;
 //    private Account account;
-    private String isInvitation;
-    private String invitedById;
-    private boolean isActive;
-    private Date activatedDate;
-    private String activatedReason;
 
 }

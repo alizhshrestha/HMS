@@ -25,12 +25,5 @@ public class AdminResponseDto {
     private boolean status = false;
     private boolean isVerified = false;
     private String rememberToken;
-    private UUID uuid;
-    private Set<AccountResponseDto> accounts = new HashSet<>();
-    private String isInvitation;
-    private String invitedById;
-    private boolean isActive;
-    private Date activatedDate;
-    private String activatedReason;
 
 }

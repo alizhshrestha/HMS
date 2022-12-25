@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 @ToString
 public class Admin extends BaseEntity implements UserDetails {
     @Id
-//    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
-//    @GeneratedValue(generator = "seq_gen")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(generator = "seq_gen")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "first_name", length = 100)
@@ -44,8 +44,8 @@ public class Admin extends BaseEntity implements UserDetails {
     @Column(name="remember_token" ,length = 256)
     private String rememberToken;
 
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<AccountAdmins> accountAdmins = new HashSet<>();
+//    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private Set<AccountAdmins> accountAdmins = new HashSet<>();
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<AdminRoles> adminRoles = new HashSet<>();

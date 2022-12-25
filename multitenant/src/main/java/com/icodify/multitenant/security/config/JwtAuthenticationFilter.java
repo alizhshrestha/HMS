@@ -1,6 +1,5 @@
 package com.icodify.multitenant.security.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icodify.multitenant.config.multitenancy.context.TenantContext;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -20,18 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
-    private UserDetailsService userDetailsService;
-    private JwtTokenHelper jwtTokenHelper;
+    private final UserDetailsService userDetailsService;
+    private final JwtTokenHelper jwtTokenHelper;
 
     public JwtAuthenticationFilter(UserDetailsService userDetailsService, JwtTokenHelper jwtTokenHelper) {
         this.userDetailsService = userDetailsService;
@@ -47,44 +42,51 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String username = null;
         String token = null;
 
-        if(requestToken!=null && requestToken.startsWith("Bearer")){
+        if (requestToken != null && requestToken.startsWith("Bearer")) {
             token = requestToken.substring(7);
-            try{
+            try {
                 username = this.jwtTokenHelper.getUsernameFromToken(token);
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get Jwt token");
-            }catch (ExpiredJwtException e){
+            } catch (ExpiredJwtException e) {
                 System.out.println("Jwt token has expired");
-            }catch (MalformedJwtException e){
+            } catch (MalformedJwtException e) {
                 System.out.println("Invalid jwt");
             }
-        }else
+        } else
             log.info("Jwt token does not begin with Bearer");
 
         //once we get the token, now validate
-        if(username !=null && SecurityContextHolder.getContext().getAuthentication()==null){
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             boolean isSuperAdmin = false;
 
             //get tenant id from token and set to context
             String tenant = this.jwtTokenHelper.getTenantIdFromToken(token);
             ArrayList<String> roles = this.jwtTokenHelper.getRolesFromToken(token);
+            System.out.println("Roles::::::<<<<>>>>>>>" + roles);
 
-            for(String role: roles){
-                if(role.equals("ROLE_SUPERADMIN")){
+            for (String role : roles) {
+                if (role.equals("ROLE_SUPERADMIN")) {
                     isSuperAdmin = true;
                 }
             }
 
-            String requestTenant = request.getHeader("tenant-id");
+//            String requestTenant = request.getHeader("tenant-id");
 
-            if(isSuperAdmin && requestTenant!=null)
-                TenantContext.setCurrentTenant(requestTenant);
+//            if (isSuperAdmin && requestTenant != null)
+//                TenantContext.setCurrentTenant(requestTenant);
+//            else
+//                TenantContext.setCurrentTenant(tenant);
+
+            if (isSuperAdmin){
+                System.out.println("Access To::>>>>>" + "SUPERADMIN");
+            }
             else
                 TenantContext.setCurrentTenant(tenant);
 
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if(this.jwtTokenHelper.validateToken(token, userDetails)){
+            if (this.jwtTokenHelper.validateToken(token, userDetails)) {
                 //if token is valid
                 //to do authentication
 
@@ -93,10 +95,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
-            }else{
+            } else {
                 log.info("Invalid jwt token");
             }
-        }else{
+
+
+        } else {
             log.info("Username is null or context is not null");
         }
 

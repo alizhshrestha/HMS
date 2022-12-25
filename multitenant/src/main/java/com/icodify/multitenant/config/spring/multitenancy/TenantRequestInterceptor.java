@@ -14,7 +14,7 @@ public class TenantRequestInterceptor implements AsyncHandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String tenantId = request.getHeader("tenantId");
+        String tenantId = request.getHeader("tenant-id");
         TenantContext.setCurrentTenant(tenantId);
         return true;
 
@@ -23,11 +23,6 @@ public class TenantRequestInterceptor implements AsyncHandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         TenantContext.clear();
-    }
-
-    private boolean setTenantContext(String tenant) {
-        TenantContext.setCurrentTenant(tenant);
-        return true;
     }
 
 

@@ -8,10 +8,10 @@ import java.util.List;
 public interface AdminService {
 
 
-    AdminResponseDto createAdmin(AdminRequestDto adminRequestDto, Integer accountId);
+    AdminResponseDto createAdmin(AdminRequestDto adminRequestDto);
 
     //update admin
-    AdminResponseDto updateAdmin(AdminRequestDto adminDto, Integer adminId, Integer accountId);
+    AdminResponseDto updateAdmin(AdminRequestDto adminDto, Integer adminId);
 
     //get admin
     AdminResponseDto getAdminById(Integer adminId);

@@ -36,12 +36,12 @@ public class AuthController {
         this.adminService = adminService;
     }
 
-    @PostMapping("/login/{tenant}")
-    public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest request, HttpServletRequest servletRequest, @PathVariable("tenant") String tenant) throws Exception{
+    @PostMapping("/login")
+    public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest request, HttpServletRequest servletRequest) throws Exception{
         this.authenticate(request.getEmail(), request.getPassword());
 
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(request.getEmail());
-        String token = this.jwtTokenHelper.generateToken(userDetails, servletRequest, tenant);
+        String token = this.jwtTokenHelper.generateToken(userDetails, servletRequest);
 
         JwtAuthResponse response = new JwtAuthResponse();
         response.setToken(token);

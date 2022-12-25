@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -19,10 +20,10 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @PostMapping("/account/{accountId}")
-    public ResponseEntity<AdminResponseDto> savedAdmin(@RequestBody AdminRequestDto adminRequestDto,
-                                                       @PathVariable("accountId") Integer accountId) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(adminService.createAdmin(adminRequestDto, accountId));
+    @PostMapping
+//    @RolesAllowed("ROLE_SUPERADMIN")
+    public ResponseEntity<AdminResponseDto> savedAdmin(@RequestBody AdminRequestDto adminRequestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(adminService.createAdmin(adminRequestDto));
     }
 
     //get specific admin by id
@@ -38,11 +39,10 @@ public class AdminController {
     }
 
     //update admin
-    @PutMapping("/{adminId}/account/{accountId}")
+    @PutMapping("/{adminId}")
     public ResponseEntity<AdminResponseDto> updateAdmin(@RequestBody AdminRequestDto adminRequestDto,
-                                                        @PathVariable("adminId") Integer adminId,
-                                                        @PathVariable("accountId") Integer accountId){
-        return ResponseEntity.status(HttpStatus.OK).body(adminService.updateAdmin(adminRequestDto, adminId, accountId));
+                                                        @PathVariable("adminId") Integer adminId){
+        return ResponseEntity.status(HttpStatus.OK).body(adminService.updateAdmin(adminRequestDto, adminId));
     }
 
     //delete admin

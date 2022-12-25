@@ -1,10 +1,7 @@
 package com.icodify.multitenant.model.dto.response;
 
-import com.icodify.multitenant.model.entities.Account;
-import com.icodify.multitenant.model.entities.Admin;
 import lombok.*;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -34,11 +31,6 @@ public class AccountResponseDto {
 
 //    private AdminResponseDto admin;
 //    private AccountResponseDto account;
-    private String isInvitation;
-    private String invitedById;
-    private boolean isActive;
-    private Date activatedDate;
-    private String activatedReason;
 
 
 }

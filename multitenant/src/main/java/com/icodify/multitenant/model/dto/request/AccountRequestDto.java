@@ -1,16 +1,8 @@
 package com.icodify.multitenant.model.dto.request;
 
-import com.icodify.multitenant.model.entities.Account;
-import com.icodify.multitenant.model.entities.AccountAdmins;
-import com.icodify.multitenant.model.entities.Admin;
 import com.icodify.multitenant.model.entities.BaseEntity;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -38,14 +30,6 @@ public class AccountRequestDto extends BaseEntity {
     private String metaKeyword;
     private String metaDescription;
 //    private Set<AccountAdmins> accountAdmins = new HashSet<>();
-
-    private Admin admin;
-    private Account account;
-    private String isInvitation;
-    private String invitedById;
-    private boolean isActive;
-    private Date activatedDate;
-    private String activatedReason;
 
 
 }

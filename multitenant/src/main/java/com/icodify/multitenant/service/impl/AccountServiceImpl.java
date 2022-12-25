@@ -3,12 +3,10 @@ package com.icodify.multitenant.service.impl;
 import com.icodify.multitenant.model.dto.request.AccountRequestDto;
 import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 import com.icodify.multitenant.model.entities.Account;
-import com.icodify.multitenant.model.entities.AccountAdmins;
 import com.icodify.multitenant.repository.AccountRepository;
 import com.icodify.multitenant.service.AccountService;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -42,19 +40,6 @@ public class AccountServiceImpl implements AccountService {
                 .metaDescription(accountDto.getMetaDescription())
                 .build();
 
-        AccountAdmins accountAdmins = AccountAdmins.builder()
-                .uuid(UUID.randomUUID())
-                .admin(null)
-                .account(account)
-                .isInvitation(accountDto.getIsInvitation())
-                .invitedById(accountDto.getInvitedById())
-                .isActive(accountDto.isActive())
-                .activatedDate(accountDto.getActivatedDate())
-                .activatedReason(accountDto.getActivatedReason())
-                .build();
-
-        account.setAccountAdmins(Set.of(accountAdmins));
-
         Account createdAccount = accountRepository.save(account);
         return AccountResponseDto.builder()
                 .id(createdAccount.getId())
@@ -74,12 +59,6 @@ public class AccountServiceImpl implements AccountService {
                 .metaTitle(createdAccount.getMetaTitle())
                 .metaKeyword(createdAccount.getMetaKeyword())
                 .metaDescription(createdAccount.getMetaDescription())
-//                .admin(null)
-                .isInvitation(accountAdmins.getIsInvitation())
-                .invitedById(accountAdmins.getInvitedById())
-                .isActive(accountAdmins.isActive())
-                .activatedDate(accountAdmins.getActivatedDate())
-                .activatedReason(accountAdmins.getActivatedReason())
                 .build();
     }
 
