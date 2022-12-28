@@ -38,7 +38,7 @@ public class SecurityConfig {
             "/swagger-resources/**",
             "/swagger-ui/**",
             "/webjars/**",
-            "/base/addsource/**"
+            "/base/**"
     };
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;

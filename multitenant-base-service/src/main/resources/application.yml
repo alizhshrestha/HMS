@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/multitenant
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+    hikari:
+      max-lifetime: 45000
+      keepalive-time: 40000
+      idle-timeout: 35000
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 2027

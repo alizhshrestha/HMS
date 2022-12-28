@@ -1,9 +1,9 @@
-package com.icodify.multitenant.model.entities;
+package com.example.multitenantbaseservice.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -25,6 +25,7 @@ public class Account extends BaseEntity {
     private UUID uuid;
     @Column(length = 100)
     private String title;
+//    @Column(name = "description", columnDefinition = "CLOB")
 //    @Lob
 //    @Type(type = "org.hibernate.type.TextType")
     @Column(columnDefinition="TEXT")
@@ -54,8 +55,9 @@ public class Account extends BaseEntity {
     @Column(name = "meta_keyword", length = 100, nullable = true)
     private String metaKeyword;
 //    @Column(name = "meta_description", nullable = true)
+//    @Column(name = "metaDescription", columnDefinition = "CLOB", nullable = true)
 //    @Lob
-//    @Type(type = "org.hibernate.type.TextType")
+//    @Type(type = "org.hibernate.type.TextType", )
     @Column(columnDefinition="TEXT")
     private String metaDescription;
 

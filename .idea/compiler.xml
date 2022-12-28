@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
-        <module name="multitenant" />
+        <module name="multitenant-base-service" />
         <module name="config-server" />
         <module name="discovery-server" />
         <module name="payment-service" />
+        <module name="api-gateway" />
+        <module name="multitenant" />
         <module name="internal-service" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="discovery-server" options="-parameters" />
       <module name="internal-service" options="-parameters" />
       <module name="multitenant" options="-parameters" />
+      <module name="multitenant-base-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
     </option>
   </component>

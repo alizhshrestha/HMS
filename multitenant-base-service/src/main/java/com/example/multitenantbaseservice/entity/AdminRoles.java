@@ -1,9 +1,12 @@
-package com.icodify.multitenant.model.entities;
+package com.example.multitenantbaseservice.entity;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -12,8 +15,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class AdminRoles extends BaseEntity{
+public class AdminRoles extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(

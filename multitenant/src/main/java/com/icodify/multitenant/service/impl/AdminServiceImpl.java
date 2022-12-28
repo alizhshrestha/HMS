@@ -70,7 +70,7 @@ public class AdminServiceImpl implements AdminService {
         admin.setMiddleName(adminDto.getMiddleName());
         admin.setLastName(adminDto.getLastName());
         admin.setEmail(adminDto.getEmail());
-        admin.setPassword(adminDto.getPassword());
+        admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
         admin.setStatus(adminDto.isStatus());
         admin.setVerified(adminDto.isVerified());
         admin.setRememberToken(adminDto.getRememberToken());

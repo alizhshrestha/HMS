@@ -6,4 +6,6 @@ import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 public interface BaseService {
 
     AccountResponseDto createTenantSchema(AccountRequestDto accountRequestDto);
+
+    String register(AccountRequestDto accountRequestDto);
 }

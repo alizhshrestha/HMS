@@ -46,7 +46,10 @@ public class JwtTokenHelper {
 
     public String getTenantIdFromToken(String token) {
         final Claims claims = getAllClaimsFromToken(token);
-        return claims.get("tenant-id").toString();
+        if(claims.get("tenant-id")!=null)
+            return claims.get("tenant-id").toString();
+        else
+            return "public";
     }
 
 //    public Map<String, Object> getParametersFromToken(String token){

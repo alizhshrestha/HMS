@@ -16,11 +16,16 @@ public class BaseController {
         this.baseService = baseService;
     }
 
-    @PostMapping("/addsource")
-    @CrossOrigin(origins = "*")
-    public ResponseEntity<String> addDSource(@RequestBody AccountRequestDto accountRequestDto){
-        AccountResponseDto createdAccount = baseService.createTenantSchema(accountRequestDto);
-        return ResponseEntity.ok("success created tenant" + createdAccount.getId());
+//    @PostMapping("/addsource")
+//    @CrossOrigin(origins = "*")
+//    public ResponseEntity<String> addDSource(@RequestBody AccountRequestDto accountRequestDto){
+//        AccountResponseDto createdAccount = baseService.createTenantSchema(accountRequestDto);
+//        return ResponseEntity.ok("success created tenant" + createdAccount.getId());
+//    }
+
+    @PostMapping("/register")
+    public String registerTenant(@RequestBody AccountRequestDto accountRequestDto){
+        return baseService.register(accountRequestDto);
     }
 
 }
