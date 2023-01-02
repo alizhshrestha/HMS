@@ -1,5 +1,7 @@
 package com.icodify.multitenant;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.icodify.multitenant.config.messagequeue.KafkaTopicConfig;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.Admin;
 import com.icodify.multitenant.model.entities.AdminRoles;
@@ -15,6 +17,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.messaging.Message;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
@@ -57,12 +61,8 @@ public class MultitenantApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner() {
+    CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
         return args -> {
-//            List<Account> allaccounts = accountRepository.findAll();
-//            System.out.println("Accounts::::::>>>> " + allaccounts);
-//            System.out.println("Current Tenant>>>>>>>>>>" + TenantContext.getCurrentTenant());
-
             List<Admin> admins = adminRepository.findAll();
             System.out.println("Admins::::>>>>>>> " + admins);
             admins.stream().forEach(admin -> {
@@ -130,6 +130,13 @@ public class MultitenantApplication {
 
                 adminRoleRepository.save(adminRole);
             }
+
+/*            ObjectMapper objectMapper = new ObjectMapper();
+            String accJson = objectMapper.writeValueAsString(account);
+
+            for (int i = 0; i < 50; i++) {
+                kafkaTemplate.send(KafkaTopicConfig.topicName, accJson);
+            }*/
 
 
         };

@@ -1,0 +1,23 @@
+
+D
+java:S3740?"/Provide the parametrized type for this generic.(µ›‚U
+e
+java:S11921"JDefine a constant instead of duplicating this literal "tenant-id" 4 times.(ÕÜÃÿÿÿÿÿ
+…
+java:S1319?"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(µ›‚U
+k	java:S117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª³†àûÿÿÿÿ
+a
+java:S2184"FCast one of the operands of this multiplication operation to a "long".(ˆà’ıûÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(«ØÑçşÿÿÿÿ
+V	java:S1257"<This block of commented-out lines of code should be removed.(Ô³¬ûÿÿÿÿ
+¢
+java:S1130U"‹Remove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException', as it cannot be thrown from method's body.(Ã¼éş
+[
+java:S1612X"@Replace this lambda with method reference 'AdminRoles::getRole'.(ª³†àûÿÿÿÿ
+G
+java:S1602Z",Remove useless curly braces around statement(û²—Òúÿÿÿÿ
+K
+java:S1068"5Remove this unused "accountRepository" private field.(“ÓØó
+J
+java:S1068"/Remove this unused "modelMapper" private field.(«ŞËãşÿÿÿÿ
