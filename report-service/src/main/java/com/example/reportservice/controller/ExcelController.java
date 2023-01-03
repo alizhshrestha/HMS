@@ -5,6 +5,8 @@ import com.example.reportservice.util.ExcelFileWriter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,33 +16,14 @@ import java.util.UUID;
 @RequestMapping("/api/report")
 public class ExcelController {
 
+    Logger log = LoggerFactory.getLogger(ExcelController.class);
+
     @GetMapping("/excel")
     public void getExcel(HttpServletResponse response, @RequestParam(value="accountDto") String accountDto) throws Exception {
-//        Account account = Account.builder()
-//                .id(1)
-//                .uuid(UUID.randomUUID())
-//                .title("Icodify")
-//                .description("This is icodify company")
-//                .addressLine1("Baluwatar")
-//                .addressLine2("Baluwatar")
-//                .city("Ktm")
-//                .country("Nepal")
-//                .zip("44600")
-//                .logo("logo.png")
-//                .favicon("fav.ico")
-//                .email("icodify@gmail.com")
-//                .contact("98")
-//                .phone("98")
-//                .metaTitle("meta")
-//                .metaKeyword("meta")
-//                .metaDescription("meta")
-//                .build();
 
         ObjectMapper objectMapper = new ObjectMapper();
         List<Account> accounts = objectMapper.readValue(accountDto, new TypeReference<List<Account>>(){});
-        System.out.println(accounts);
-
-//        List<Account> accounts = List.of(account);
+        log.info("Getting accounts details from multitenant services: {}", accounts);
 
         response.setContentType("application/octet-stream");
 
