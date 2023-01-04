@@ -5,17 +5,22 @@ import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.repository.AccountRepository;
 import com.icodify.multitenant.service.AccountService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
+    private final ModelMapper modelMapper;
 
-    public AccountServiceImpl(AccountRepository accountRepository) {
+    public AccountServiceImpl(AccountRepository accountRepository, ModelMapper modelMapper) {
         this.accountRepository = accountRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -73,8 +78,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponseDto getAllAccounts() {
-        return null;
+    public List<AccountResponseDto> getAllAccounts() {
+        List<Account> accounts = accountRepository.findAll();
+        return accounts.stream().map(acc -> modelMapper.map(acc, AccountResponseDto.class)).collect(Collectors.toList());
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.icodify.multitenant.service;
 import com.icodify.multitenant.model.dto.request.AccountRequestDto;
 import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 
+import java.util.List;
+
 public interface AccountService {
 
     //save admin
@@ -15,7 +17,7 @@ public interface AccountService {
     AccountResponseDto getAccountById(Integer accountId);
 
     //get all admins
-    AccountResponseDto getAllAccounts();
+    List<AccountResponseDto> getAllAccounts();
 
     //delete admins
     void deleteAccount(Integer accountId);

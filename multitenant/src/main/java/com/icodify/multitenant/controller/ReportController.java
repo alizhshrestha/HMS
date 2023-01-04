@@ -1,8 +1,11 @@
 package com.icodify.multitenant.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.icodify.multitenant.model.entities.Account;
+import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 import com.icodify.multitenant.repository.AccountRepository;
+import com.icodify.multitenant.service.AccountService;
+import com.icodify.multitenant.service.AdminService;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,24 +22,41 @@ import java.util.List;
 @RequestMapping("/api/multitenant/report")
 public class ReportController {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
+    private final AccountService accountService;
+    private final AdminService adminService;
 
-    public ReportController(AccountRepository accountRepository) {
+    public ReportController(AccountRepository accountRepository,
+                            AccountService accountService,
+                            AdminService adminService) {
         this.accountRepository = accountRepository;
+        this.accountService = accountService;
+        this.adminService = adminService;
     }
 
     @GetMapping("/excel")
-    public ResponseEntity<byte[]> getEntities() throws IOException{
+    public ResponseEntity<byte[]> exportAccountsToExcel() throws IOException {
+        ResponseEntity<byte[]> responseEntity = getResponseEntityFromUrl("http://localhost:8085/api/report/excel?accountDto={accountDto}");
+        return responseEntity;
+    }
 
-        List<Account> accounts = accountRepository.findAll();
-        
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> exportAccountsToPdf() throws IOException {
+        ResponseEntity<byte[]> responseEntity = getResponseEntityFromUrl("http://localhost:8085/api/report/pdf?accountDto={accountDto}");
+        return responseEntity;
+    }
+
+
+    private ResponseEntity<byte[]> getResponseEntityFromUrl(String url) throws JsonProcessingException {
+        //        List<Account> accounts = accountRepository.findAll();
+        List<AccountResponseDto> accounts = accountService.getAllAccounts();
+//        List<AdminResponseDto> admins = adminService.getAllAdmins();
+
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonAccounts = objectMapper.writeValueAsString(accounts);
+//        String jsonAccounts = objectMapper.writeValueAsString(admins);
 
-//        ResponseEntity<byte[]> responseEntity = new RestTemplate().getForEntity("http://localhost:8080/api/report/excel/{accountDto}", byte[].class, jsonAccounts);
-//        ResponseEntity<byte[]> responseEntity = new RestTemplate().getForObject("http://localhost:8080/api/report/excel", byte[].class);
-
-        String uriTemplate = "http://localhost:8080/api/report/excel?accountDto={accountDto}";
+        String uriTemplate = url;
         URI uri = UriComponentsBuilder.fromUriString(uriTemplate).build(jsonAccounts);
 
         RequestEntity<Void> requestEntity = RequestEntity.get(uri)
@@ -46,5 +66,6 @@ public class ReportController {
 
         return responseEntity;
     }
+
 
 }

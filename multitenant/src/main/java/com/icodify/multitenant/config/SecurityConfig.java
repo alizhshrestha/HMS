@@ -40,7 +40,8 @@ public class SecurityConfig {
             "/webjars/**",
             "/base/**",
             "/api/v1/report/messages",
-            "/api/multitenant/report/excel"
+            "/api/multitenant/report/excel",
+            "/api/multitenant/report/pdf"
     };
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
