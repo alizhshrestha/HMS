@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/report")
@@ -24,8 +25,10 @@ public class ExcelController {
     public void getExcel(HttpServletResponse response, @RequestParam(value = "accountDto") String accountDto) throws Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Account> accounts = objectMapper.readValue(accountDto, new TypeReference<List<Account>>() {
+        List<Map<String, Object>> accounts = objectMapper.readValue(accountDto, new TypeReference<List<Map<String, Object>>>() {
         });
+//        List<Account> accounts = objectMapper.readValue(accountDto, new TypeReference<List<Account>>() {
+//        });
         log.info("Getting accounts details from multitenant services: {}", accounts);
 
         response.setContentType("application/octet-stream");
@@ -34,6 +37,10 @@ public class ExcelController {
         String headerValue = "attachment;filename=accounts.xls";
 
         response.setHeader(headerKey, headerValue);
+//        ExcelFileWriter.writeToExcel(response, "accounts", accounts);
+
+
+
         ExcelFileWriter.writeToExcel(response, "accounts", accounts);
 
         response.flushBuffer();

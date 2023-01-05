@@ -179,10 +179,6 @@ Zmultitenant/src/main/java/com/icodify/multitenant/model/dto/request/AccountRequ
 Vreport-service/src/main/java/com/example/reportservice/config/KafkaConsumerConfig.java,a\2\a2768ce2f645569de70c9af27faca59031c6f84c
 ƒ
 Sreport-service/src/main/java/com/example/reportservice/config/KafkaTopicConfig.java,0\8\0837d4ac77a2ecefc4ff7323b51a2026cbf520bf
-„
-Treport-service/src/main/java/com/example/reportservice/ReportServiceApplication.java,0\a\0ac89e08449e0f9ba7af33f2416071398c57c4bd
-}
-Mmultitenant/src/main/java/com/icodify/multitenant/MultitenantApplication.java,2\5\2529438aaca6028315d5275d9fd9940bca2a08f7
 |
 Lmultitenant/src/main/java/com/icodify/multitenant/config/SecurityConfig.java,8\4\84c6b26bfaa466629c4675284974c46c78888b0c
 }
