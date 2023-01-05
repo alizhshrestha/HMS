@@ -1,5 +1,6 @@
 package com.icodify.multitenant.service.impl;
 
+import com.icodify.multitenant.exception.ResourceNotFoundException;
 import com.icodify.multitenant.model.dto.request.AccountRequestDto;
 import com.icodify.multitenant.model.dto.response.AccountResponseDto;
 import com.icodify.multitenant.model.entities.Account;
@@ -69,12 +70,35 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountResponseDto updateAccount(AccountRequestDto accountDto, Integer accountId) {
-        return null;
+
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResourceNotFoundException("Account", "Id", accountId));
+
+        account.setUuid(account.getUuid());
+        account.setTitle(accountDto.getTitle());
+        account.setDescription(accountDto.getDescription());
+        account.setAddressLine1(accountDto.getAddressLine1());
+        account.setAddressLine2(accountDto.getAddressLine2());
+        account.setCity(accountDto.getCity());
+        account.setCountry(accountDto.getCountry());
+        account.setZip(accountDto.getZip());
+        account.setLogo(accountDto.getLogo());
+        account.setFavicon(accountDto.getFavicon());
+        account.setEmail(accountDto.getEmail());
+        account.setContact(accountDto.getContact());
+        account.setPhone(accountDto.getPhone());
+        account.setMetaTitle(accountDto.getMetaTitle());
+        account.setMetaKeyword(accountDto.getMetaKeyword());
+        account.setMetaDescription(accountDto.getMetaDescription());
+
+        Account updatedAccount = accountRepository.save(account);
+        return this.modelMapper.map(updatedAccount, AccountResponseDto.class);
     }
 
     @Override
     public AccountResponseDto getAccountById(Integer accountId) {
-        return null;
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResourceNotFoundException("Account", "Id", accountId));
+
+        return this.modelMapper.map(account, AccountResponseDto.class);
     }
 
     @Override
@@ -85,6 +109,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteAccount(Integer accountId) {
-
+        accountRepository.deleteById(accountId);
     }
 }
