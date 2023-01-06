@@ -1,0 +1,12 @@
+
+c
+java:S2095"FUse try-with-resources or close this "Document" in a "finally" clause.(äÆñ£8€ş¤à×0
+g
+java:S3252("EUse static access with "com.lowagie.text.Element" for "ALIGN_CENTER".(è€ÙÛıÿÿÿÿ8ş¤à×0
+X	java:S125/"<This block of commented-out lines of code should be removed.(§ò¾Ú8ş¤à×0
+R
+java:S32525"5Use static access with "java.awt.Color" for "ORANGE".(ğÃúİ8‘ş¤à×0
+Q
+java:S3252;"4Use static access with "java.awt.Color" for "WHITE".(Í…¸À8‘ş¤à×0
+I
+java:S1602@",Remove useless curly braces around statement(‹©Ó•8Æõ¶à×0

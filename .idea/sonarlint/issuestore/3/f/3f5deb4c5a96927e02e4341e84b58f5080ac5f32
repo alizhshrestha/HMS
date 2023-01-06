@@ -1,0 +1,14 @@
+
+
+java:S1488'"fImmediately return this expression instead of assigning it to the temporary variable "responseEntity".(­ó“ıùÿÿÿÿ
+
+java:S1488-"fImmediately return this expression instead of assigning it to the temporary variable "responseEntity".(ÑÎ£íÿÿÿÿÿ
+|
+java:S1488A"fImmediately return this expression instead of assigning it to the temporary variable "responseEntity".(ˆ“†
+P	java:S1253"<This block of commented-out lines of code should be removed.(àµš
+X	java:S1255"<This block of commented-out lines of code should be removed.(×Úùá8Ö¥‡á×0
+X	java:S1259"<This block of commented-out lines of code should be removed.(û½‘Û8©ı†á×0
+K
+java:S1068"5Remove this unused "accountRepository" private field.(“ÓØó
+R
+java:S1068"0Remove this unused "adminService" private field.(Ğ¦ÿøüÿÿÿÿ8ç¥‡á×0

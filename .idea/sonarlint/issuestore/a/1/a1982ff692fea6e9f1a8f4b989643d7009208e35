@@ -1,0 +1,12 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ŸíÓ®
+V	java:S125"<This block of commented-out lines of code should be removed.(Ì¬íúÿÿÿÿ
+?
+java:S1481n")Remove this unused "file" local variable.(Üóò´
+B
+java:S1602z",Remove useless curly braces around statement(‹©Ó•
+F	java:S108")Either remove or fill this block of code.(ï­£Ä8Ÿ®ûŒØ0
+F	java:S108£")Either remove or fill this block of code.(ï­£Ä8 ®ûŒØ0
+E
+java:S2093m"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ

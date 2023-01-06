@@ -1,0 +1,16 @@
+
+\
+java:S1192D"FDefine a constant instead of duplicating this literal "Admin" 3 times.(Æ•šÆ
+~
+java:S1488b"hImmediately return this expression instead of assigning it to the temporary variable "adminResponseDto".(ûÖ
+V	java:S125'"<This block of commented-out lines of code should be removed.(¼“™˜ùÿÿÿÿ
+U
+java:S1854…"9Remove this useless assignment to local variable "admin".(«òØúÿÿÿÿ
+F
+java:S1481…"*Remove this unused "admin" local variable.(«òØúÿÿÿÿ
+t
+java:S1128"^Remove this unused import 'com.icodify.multitenant.config.multitenancy.context.TenantContext'.(òª¶Ö
+K
+java:S1068"5Remove this unused "accountRepository" private field.(“ÓØó
+J
+java:S1068"/Remove this unused "modelMapper" private field.(«ŞËãşÿÿÿÿ
