@@ -17,8 +17,8 @@ import java.util.UUID;
 public class Account extends BaseEntity {
 
     @Id
-    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "seq_gen")
+    @SequenceGenerator(name = "seq_gen_account", sequenceName = "seq_account", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "seq_gen_account")
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

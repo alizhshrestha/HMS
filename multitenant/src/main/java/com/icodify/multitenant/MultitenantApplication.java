@@ -103,7 +103,7 @@ public class MultitenantApplication {
                     .email("suzan@gmail.com")
                     .password(passwordEncoder.encode("root"))
                     .status(true)
-                    .isVerified(true)
+                    .verified(true)
                     .rememberToken("Yes")
                     .build();
 

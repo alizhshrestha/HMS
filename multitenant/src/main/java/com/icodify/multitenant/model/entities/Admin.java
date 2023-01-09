@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 @ToString
 public class Admin extends BaseEntity implements UserDetails {
     @Id
-    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(generator = "seq_gen")
+    @SequenceGenerator(name = "seq_gen_admin", sequenceName = "seq_admin", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(generator = "seq_gen_admin")
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -40,7 +40,7 @@ public class Admin extends BaseEntity implements UserDetails {
     private String password;
     private boolean status = false;
     @Column(name = "is_verified")
-    private boolean isVerified = false;
+    private boolean verified = false;
     @Column(name="remember_token" ,length = 256)
     private String rememberToken;
 

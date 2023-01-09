@@ -15,7 +15,7 @@ public class AdminRequestDto {
     private String email;
     private String password;
     private boolean status = false;
-    private boolean isVerified = false;
+    private boolean verified = false;
     private String rememberToken;
 //    private UUID uuid;
 //    private Account account;

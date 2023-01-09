@@ -18,8 +18,8 @@ import java.util.Set;
 public class User extends BaseEntity{
 
     @Id
-    @SequenceGenerator(name = "seq_gen", sequenceName = "seq_user", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "seq_gen")
+    @SequenceGenerator(name = "seq_gen_user", sequenceName = "seq_user", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "seq_gen_user")
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
