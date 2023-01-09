@@ -193,13 +193,9 @@ Zmultitenant/src/main/java/com/icodify/multitenant/model/dto/response/AdminRespo
 Pmultitenant/src/main/java/com/icodify/multitenant/repository/RoleRepository.java,a\8\a8d1974f84c9a42be426809f3a98cf6e70f52ba1
 ä
 Zmultitenant/src/main/java/com/icodify/multitenant/exception/ResourceNotFoundException.java,f\c\fcea8cc7d4267940b5d1af162ae91d2debcb0a58
-Ö
-Umultitenant/src/main/java/com/icodify/multitenant/repository/AdminRoleRepository.java,d\6\d687deb892b3b8742f01bc3277d6d1a5c3c6a98a
 {
 Kmultitenant/src/main/java/com/icodify/multitenant/service/AdminService.java,0\2\0268ad0d404ed16dee35ddf528f6aadf575b9b2f
 ù
 mmultitenant/src/main/java/com/icodify/multitenant/config/hibernate/multitenancy/TenantIdentifierResolver.java,a\3\a35ce91332d8e6b4c39f7a05175dac010f8f3c2a
 |
 Lmultitenant/src/main/java/com/icodify/multitenant/config/SecurityConfig.java,8\4\84c6b26bfaa466629c4675284974c46c78888b0c
-z
-Jmultitenant/src/main/java/com/icodify/multitenant/model/entities/Role.java,1\4\1486a014ba82ed749ae280bdc73ee68ec7c7aee1

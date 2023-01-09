@@ -110,15 +110,15 @@ public class AdminServiceImpl implements AdminService {
 
             List<Role> roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
 
-//            if(adminRepository.existsAdminByAdminRoles_Role(role)){
-//                roleExists.set(true);
-//            }
+            if(adminRoleRepository.existsAdminRolesByAdminAndRole_Id(admin, roleId)){
+                roleExists.set(true);
+            }
 
-            roles.forEach(r -> {
-                if (r.equals(role)) {
-                    roleExists.set(true);
-                }
-            });
+//            roles.forEach(r -> {
+//                if (r.equals(role)) {
+//                    roleExists.set(true);
+//                }
+//            });
 
             if (!roleExists.get()) {
                 admin.getAdminRoles().add(AdminRoles.builder()
