@@ -1,0 +1,16 @@
+
+r	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á¨­şÿÿÿÿ8‘¢ù¬Ù0
+X	java:S1257"<This block of commented-out lines of code should be removed.(æ®î8š¢ù¬Ù0
+Z	java:S106C"9Replace this use of System.out or System.err by a logger.(¿‹åŸşÿÿÿÿ8œ¢ù¬Ù0
+]
+java:S1612E"@Replace this lambda with method reference 'AdminRoles::getRole'.(¾´èƒ8¢ù¬Ù0
+N
+java:S1602F",Remove useless curly braces around statement(ù›Ñùÿÿÿÿ8¢ù¬Ù0
+Z	java:S106G"9Replace this use of System.out or System.err by a logger.(­ÇÁÊşÿÿÿÿ8¢ù¬Ù0
+^	java:S125†"<This block of commented-out lines of code should be removed.(èÜİÇıÿÿÿÿ8£¢ù¬Ù0
+e
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8²³ñ­Ù0
+v
+java:S1128"YRemove this unused import 'com.icodify.multitenant.config.messagequeue.KafkaTopicConfig'.(˜¸µ­8²³ñ­Ù0
+_
+java:S1128"BRemove this unused import 'org.springframework.messaging.Message'.(–¬•ï8²³ñ­Ù0

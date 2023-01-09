@@ -1,0 +1,19 @@
+
+`	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(îš»Íøÿÿÿÿ
+D
+java:S3740Z"/Provide the parametrized type for this generic.(Ž¬í&
+E
+java:S3740l"/Provide the parametrized type for this generic.(‘žýÙ
+E
+java:S3740l"/Provide the parametrized type for this generic.(‘žýÙ
+8
+java:S2386""Make this member "protected".(²áÿœùÿÿÿÿ
+A
+java:S1602A",Remove useless curly braces around statement(àÔ«E
+V	java:S125F"<This block of commented-out lines of code should be removed.(È…ù»ýÿÿÿÿ
+‡
+java:S1130t"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(îš»Íøÿÿÿÿ
+[
+java:S1128	"@Remove this unused import 'org.springframework.http.HttpMethod'.(Ê¨Ä¡øÿÿÿÿ
+‘
+java:S1128"{Remove this unused import 'org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity'.(Ô¦ø
