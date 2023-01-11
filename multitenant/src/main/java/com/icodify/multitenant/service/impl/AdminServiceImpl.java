@@ -49,8 +49,6 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public AdminResponseDto createAdmin(AdminRequestDto adminRequestDto, List<UUID> roleIds) {
 
-//        TenantContext.setCurrentTenant(tenant);
-
         Admin admin = Admin.builder()
                 .firstName(adminRequestDto.getFirstName())
                 .middleName(adminRequestDto.getMiddleName())
@@ -108,7 +106,7 @@ public class AdminServiceImpl implements AdminService {
 
             Role role = roleRepository.findById(roleId).orElseThrow(() -> new ResourceNotFoundException("Role", "Id " + roleId));
 
-            List<Role> roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
+//            List<Role> roles = admin.getAdminRoles().stream().map(adminRoles -> adminRoles.getRole()).collect(Collectors.toList());
 
             if(adminRoleRepository.existsAdminRolesByAdminAndRole_Id(admin, roleId)){
                 roleExists.set(true);

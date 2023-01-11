@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class BaseServiceImpl implements BaseService {
 
@@ -79,6 +81,21 @@ public class BaseServiceImpl implements BaseService {
         }
 
         return "tenant registered successfully";
+    }
+
+    @Override
+    public Account[] getAllTenants(){
+        HttpHeaders headers = new HttpHeaders();
+        ResponseEntity<Account[]> response = restTemplate.exchange("http://localhost:2027/base/getAll", HttpMethod.GET,
+                new HttpEntity<Object>(headers), Account[].class);
+
+//        if(response.getBody() != null){
+//            Account[] accountList = response.getBody();
+//            return accountList;
+//        }
+        Account[] accountList = response.getBody();
+        return accountList;
+
     }
 
 

@@ -85,10 +85,6 @@ xmultitenant/src/main/java/com/icodify/multitenant/config/hibernate/multitenancy
 kmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/entity/dto/AccountRequestDto.java,2\f\2f2e4567c2c63605e4e10e9935ee69e8d82a6400
 Ä
 Pmultitenant/src/main/java/com/icodify/multitenant/controller/AuthController.java,b\2\b2db2310cd6233443773f46941f3157ea914c430
-õ
-kmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/repository/AccountRepository.java,0\5\0538dabae1ce6ea09dfc7c029701d2f99e738eed
-ú
-lmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/controller/BaseRestController.java,7\9\7954b9ab5ed477af37c4d219c2be7da157ce7bee
 ä
 Zmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/entity/Role.java,e\6\e63cf6a4c12773a992bbde43fe1a69516d2b3f38
 ê
@@ -101,18 +97,8 @@ Zmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/entit
 emultitenant-base-service/src/main/java/com/example/multitenantbaseservice/entity/RolePermissions.java,2\f\2fff63c591168b92ab7fb960a147b28f18b308b2
 ã
 [multitenant-base-service/src/main/java/com/example/multitenantbaseservice/entity/Admin.java,2\0\2054476f34cf82d45df6261bde6b6d9a8044b9e4
-†
-pmultitenant-base-service/src/main/java/com/example/multitenantbaseservice/MultitenantBaseServiceApplication.java,6\f\6ff5c8d2dbc26b6f59c35abe1434930940a353ee
-ç
-]multitenant-base-service/src/main/java/com/example/multitenantbaseservice/entity/Account.java,f\5\f5fe42c89e410eeb54d96d81f00e6c9957463eec
 ö
 jmultitenant/src/main/java/com/icodify/multitenant/config/spring/multitenancy/TenantRequestInterceptor.java,f\7\f791577f8226ffcd6818eb093b01ebe3cc2aa91b
-z
-Jmultitenant/src/main/java/com/icodify/multitenant/service/BaseService.java,4\9\498b8dc7e3891b2c34513ab7e5e268fef078bdeb
-É
-Smultitenant/src/main/java/com/icodify/multitenant/service/impl/BaseServiceImpl.java,9\8\98c1dc8c094800ee9e71f653a840d40e491f11b2
-Ä
-Pmultitenant/src/main/java/com/icodify/multitenant/controller/BaseController.java,a\6\a61cf5f82e0e9cb4e9019d31a509d2b883b51b7a
 N
 multitenant/docker-compose.yml,5\2\52058d8e3acc2fe143cad39ef5126c0df61ab085
 C
@@ -157,8 +143,6 @@ Ymultitenant/src/main/java/com/icodify/multitenant/model/dto/response/RoleRespon
 Mmultitenant/src/main/java/com/icodify/multitenant/service/AccountService.java,4\0\40d4bc2ea2d06a42b158a41d925a077ad66609d1
 É
 Smultitenant/src/main/java/com/icodify/multitenant/service/impl/UserServiceImpl.java,2\7\27d1aad26aeb0d529ea5af9a0e4a37e9cf312f92
-â
-Ymultitenant/src/main/java/com/icodify/multitenant/security/config/CustomTenantFilter.java,c\e\cef26c0c253636ced80f117f2a634f26208b43a3
 Ä
 Pmultitenant/src/main/java/com/icodify/multitenant/repository/UserRepository.java,c\c\cc4d1433add764ae2d40cdb7007d9e5f0c878b93
 ä
@@ -181,8 +165,6 @@ Umultitenant/src/main/java/com/icodify/multitenant/model/entities/RolePermission
 Umultitenant/src/main/java/com/icodify/multitenant/model/entities/UserSocialLogin.java,9\1\912c21f684b2ff69ceee9caf84d9535b673fe6d0
 z
 Jmultitenant/src/main/java/com/icodify/multitenant/model/entities/User.java,0\9\0923de24e0c52d6b1cf6cf393c23821480994e8f
-}
-Mmultitenant/src/main/java/com/icodify/multitenant/model/entities/Account.java,b\c\bcf9153a67c49c2a51bf120125b428b3cdc29fea
 à
 Xmultitenant/src/main/java/com/icodify/multitenant/model/dto/request/AdminRequestDto.java,7\5\759f41bdd8cb225ea21a13e20894b548eec16096
 }
@@ -197,5 +179,7 @@ Zmultitenant/src/main/java/com/icodify/multitenant/exception/ResourceNotFoundExc
 Kmultitenant/src/main/java/com/icodify/multitenant/service/AdminService.java,0\2\0268ad0d404ed16dee35ddf528f6aadf575b9b2f
 ù
 mmultitenant/src/main/java/com/icodify/multitenant/config/hibernate/multitenancy/TenantIdentifierResolver.java,a\3\a35ce91332d8e6b4c39f7a05175dac010f8f3c2a
-|
-Lmultitenant/src/main/java/com/icodify/multitenant/config/SecurityConfig.java,8\4\84c6b26bfaa466629c4675284974c46c78888b0c
+{
+Kmultitenant/src/main/java/com/icodify/multitenant/config/web/WebConfig.java,2\e\2e05ea5ace7a9899b5e21fb7241cd81d79d7d834
+é
+^multitenant/src/main/java/com/icodify/multitenant/security/config/CustomUserDetailService.java,5\6\56b7cded7dee4ce80d803791508dcddb287a5921

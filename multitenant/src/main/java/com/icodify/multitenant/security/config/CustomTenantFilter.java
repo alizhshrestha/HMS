@@ -39,7 +39,6 @@ public class CustomTenantFilter extends GenericFilterBean {
                 HttpServletRequest request = (HttpServletRequest) servletRequest;
                 String requestTenant = request.getHeader("tenant-id");
                 TenantContext.setCurrentTenant(requestTenant);
-
             }
 //            else{
 //                throw new InternalAuthenticationServiceException("Unable to authenticate user as a superadmin");
