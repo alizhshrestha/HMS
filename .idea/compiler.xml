@@ -11,6 +11,7 @@
         <module name="config-server" />
         <module name="discovery-server" />
         <module name="payment-service" />
+        <module name="email-service" />
         <module name="api-gateway" />
         <module name="multitenant" />
         <module name="report-service" />
@@ -23,6 +24,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="email-service" options="-parameters" />
       <module name="internal-service" options="-parameters" />
       <module name="multitenant" options="-parameters" />
       <module name="multitenant-base-service" options="-parameters" />

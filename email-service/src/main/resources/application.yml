@@ -1,0 +1,15 @@
+server:
+  port: 8093
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: alizhshrestha@gmail.com
+    password: avvzswwrjcuqkcvr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
