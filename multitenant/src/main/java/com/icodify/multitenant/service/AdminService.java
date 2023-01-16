@@ -2,9 +2,11 @@ package com.icodify.multitenant.service;
 
 import com.icodify.multitenant.model.dto.request.AdminRequestDto;
 import com.icodify.multitenant.model.dto.response.AdminResponseDto;
+import com.icodify.multitenant.model.entities.Admin;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface AdminService {
@@ -20,6 +22,8 @@ public interface AdminService {
 
     //get all admins
     List<AdminResponseDto> getAllAdmins();
+
+    AdminResponseDto getAdminByEmail(String email);
 
     //delete admins
     void deleteAdmin(Integer adminId);

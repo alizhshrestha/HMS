@@ -1,0 +1,12 @@
+
+@
+java:S5411Y"*Use the primitive boolean expression here.(¼’Á¿
+h
+java:S3776%"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(¨Š†Ø
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(ÉóØ
+S	java:S1064"9Replace this use of System.out or System.err by a logger.(œ«üÿÿÿÿ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(çĞ‰¢şÿÿÿÿ
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(ÚÚº¡şÿÿÿÿ
+V	java:S125K"<This block of commented-out lines of code should be removed.(ŠéÊóúÿÿÿÿ
+V	java:S125M"<This block of commented-out lines of code should be removed.(Ã¼Ç¢ÿÿÿÿÿ
+S	java:S106S"9Replace this use of System.out or System.err by a logger.(Äşÿúÿÿÿÿ

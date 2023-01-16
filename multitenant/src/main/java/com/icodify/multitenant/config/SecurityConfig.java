@@ -41,7 +41,8 @@ public class SecurityConfig {
             "/base/**",
             "/api/v1/report/messages",
             "/api/multitenant/report/excel",
-            "/api/multitenant/report/pdf"
+            "/api/multitenant/report/pdf",
+            "/api/otp/**"
     };
 
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;

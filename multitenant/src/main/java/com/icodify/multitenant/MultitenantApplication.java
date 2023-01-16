@@ -1,7 +1,6 @@
 package com.icodify.multitenant;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.icodify.multitenant.config.messagequeue.KafkaTopicConfig;
+import com.icodify.multitenant.model.dto.request.OtpRequestDto;
 import com.icodify.multitenant.model.entities.Account;
 import com.icodify.multitenant.model.entities.Admin;
 import com.icodify.multitenant.model.entities.AdminRoles;
@@ -10,6 +9,7 @@ import com.icodify.multitenant.repository.AccountRepository;
 import com.icodify.multitenant.repository.AdminRepository;
 import com.icodify.multitenant.repository.AdminRoleRepository;
 import com.icodify.multitenant.repository.RoleRepository;
+import com.icodify.multitenant.service.OtpService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.Message;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
@@ -37,17 +36,21 @@ public class MultitenantApplication {
     private final RoleRepository roleRepository;
     private final AdminRoleRepository adminRoleRepository;
     private BCryptPasswordEncoder passwordEncoder;
+    private final OtpService otpService;
+
 
     public MultitenantApplication(AccountRepository accountRepository,
                                   AdminRepository adminRepository,
                                   RoleRepository roleRepository,
                                   AdminRoleRepository adminRoleRepository,
-                                  BCryptPasswordEncoder passwordEncoder) {
+                                  BCryptPasswordEncoder passwordEncoder,
+                                  OtpService otpService) {
         this.accountRepository = accountRepository;
         this.adminRepository = adminRepository;
         this.roleRepository = roleRepository;
         this.adminRoleRepository = adminRoleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.otpService = otpService;
     }
 
     public static void main(String[] args) {
@@ -137,6 +140,10 @@ public class MultitenantApplication {
             for (int i = 0; i < 50; i++) {
                 kafkaTemplate.send(KafkaTopicConfig.topicName, accJson);
             }*/
+
+
+            //otp generating pin
+            System.out.println("OTP pin: " + otpService.generateOtp(new OtpRequestDto()));
 
 
         };

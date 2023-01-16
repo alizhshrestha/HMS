@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -182,6 +183,12 @@ public class AdminServiceImpl implements AdminService {
             return adminResponseDto;
 
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public AdminResponseDto getAdminByEmail(String email) {
+        Admin admin = adminRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Admin", "email: " + email));
+        return this.modelMapper.map(admin, AdminResponseDto.class);
     }
 
     @Override

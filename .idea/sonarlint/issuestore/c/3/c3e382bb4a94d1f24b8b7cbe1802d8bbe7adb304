@@ -1,0 +1,16 @@
+
+\
+java:S1192\"FDefine a constant instead of duplicating this literal "Admin" 4 times.(Æ•šÆ
+
+java:S1488›"hImmediately return this expression instead of assigning it to the temporary variable "adminResponseDto".(ûÖ
+Q	java:S125f"<This block of commented-out lines of code should be removed.(ìİŸ·
+V	java:S125n"<This block of commented-out lines of code should be removed.(ˆàúûÿÿÿÿ
+Q	java:S125t"<This block of commented-out lines of code should be removed.(ªı‚‡
+U
+java:S1854Ä"9Remove this useless assignment to local variable "admin".(«òØúÿÿÿÿ
+F
+java:S1481Ä"*Remove this unused "admin" local variable.(«òØúÿÿÿÿ
+J
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ
+K
+java:S1068"5Remove this unused "accountRepository" private field.(“ÓØó
