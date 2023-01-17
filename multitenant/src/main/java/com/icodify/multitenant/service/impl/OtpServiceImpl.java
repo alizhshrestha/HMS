@@ -52,7 +52,7 @@ public class OtpServiceImpl implements OtpService {
     public boolean validateOtp(int otpNumber, String email) {
         boolean isExpired = false;
 
-        Otp otp = otpRepository.findByOtpFor(email).orElseThrow(() -> new ResourceNotFoundException("Otp", "Email: " + email));
+        Otp otp = otpRepository.findFirstByOtpForOrderByCreatedAtDesc(email).orElseThrow(() -> new ResourceNotFoundException("Otp", "Email: " + email));
 
         Instant currentDate = Instant.now();
         Instant expiryDate = otp.getOtpGeneratedDate().toInstant().plusMillis((long) otp.getOtpValidMinutes() * 60 * 1000);
@@ -69,7 +69,7 @@ public class OtpServiceImpl implements OtpService {
 
     @Override
     public void clearOtp(String email) {
-        Otp otp = otpRepository.findByOtpFor(email).orElseThrow(() -> new ResourceNotFoundException("Otp", "Email: " + email));
+        Otp otp = otpRepository.findFirstByOtpForOrderByCreatedAtDesc(email).orElseThrow(() -> new ResourceNotFoundException("Otp", "Email: " + email));
         otpRepository.delete(otp);
     }
 

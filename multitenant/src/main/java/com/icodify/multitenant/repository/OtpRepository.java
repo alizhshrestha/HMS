@@ -8,5 +8,6 @@ import java.util.UUID;
 
 public interface OtpRepository extends JpaRepository<Otp, UUID> {
 
-    Optional<Otp> findByOtpFor(String email);
+
+    Optional<Otp> findFirstByOtpForOrderByCreatedAtDesc(String email);
 }

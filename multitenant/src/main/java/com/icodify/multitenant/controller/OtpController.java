@@ -9,10 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -53,4 +50,22 @@ public class OtpController {
 
         return ResponseEntity.status(HttpStatus.OK).body(responseToMono);
     }
+
+    @GetMapping("/validate")
+    public ResponseEntity<BaseResponse> validateOtp(@RequestParam("otp") int otp, @RequestParam("email") String email) {
+        boolean isValid = otpService.validateOtp(otp, email);
+        if (isValid) {
+            return ResponseEntity.ok(BaseResponse.builder()
+                    .status(HttpStatus.OK)
+                    .message("Successfully Verified")
+                    .build());
+        }else{
+            return ResponseEntity.ok(BaseResponse.builder()
+                    .status(HttpStatus.NOT_FOUND)
+                    .message("Please try again")
+                    .build());
+        }
+
+    }
+
 }

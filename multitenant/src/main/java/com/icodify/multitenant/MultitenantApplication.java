@@ -143,7 +143,7 @@ public class MultitenantApplication {
 
 
             //otp generating pin
-            System.out.println("OTP pin: " + otpService.generateOtp(new OtpRequestDto()));
+//            System.out.println("OTP pin: " + otpService.generateOtp(new OtpRequestDto()));
 
 
         };
