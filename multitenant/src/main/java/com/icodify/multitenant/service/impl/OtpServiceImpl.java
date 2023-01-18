@@ -62,6 +62,7 @@ public class OtpServiceImpl implements OtpService {
         }
 
         if(otpNumber==otp.getOtp() && !isExpired){
+            clearOtp(email);
             return true;
         }
         return false;

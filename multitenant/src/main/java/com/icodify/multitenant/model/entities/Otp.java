@@ -4,14 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "otp_services")
+@SQLDelete(sql = "UPDATE otp_services SET verified_date= NOW() WHERE id=?")
+@FilterDef(name = "deletedOTPFilter", parameters = @ParamDef(name = "isVerifiedDate", type = "TIMESTAMP"))
+@Filter(name = "deletedOTPFilter", condition = "verifiedDate = :isVerifiedDate")
 @Getter
 @Setter
 @NoArgsConstructor
